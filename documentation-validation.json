@@ -1,0 +1,12 @@
+{
+  "content_pages": 125,
+  "navigation_links": 125,
+  "relative_content_links_checked": 70,
+  "source_files_preserved": 221,
+  "source_javascript_syntax_pass": 10,
+  "reader_javascript_syntax_pass": true,
+  "errors": [],
+  "live_fivem_tested": false,
+  "lua_syntax_tested": false,
+  "database_migrations_tested": false
+}
