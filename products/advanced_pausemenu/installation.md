@@ -1,37 +1,22 @@
----
-description: "Dependencies and upgrade steps for Advanced Pausemenu 5.2.0."
----
-
-# Advanced Pausemenu — Installation
-
-{% hint style="info" %}
-Use the bridge release **5.2.0** with **mm_bridge 0.3.0+**. External providers are not included.
-{% endhint %}
-
-## 1. Prepare the resource
-
-Back up the current resource and database. Keep the folder named `advanced_pausemenu`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
-
-## 2. Start dependencies
-
-Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+# Installation
 
 ```cfg
 ensure ox_lib
-ensure mm_bridge
+ensure qbx_core
 ensure advanced_pausemenu
 ```
 
-This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
+Replace NORDISK RP branding, FAQ, updates, commands and waypoints in config. Inventory bridge calls `openInventory('player')`, GetPlayerWeight and GetPlayerMaxWeight. Changing its resource string to TGIANN does not ensure those exports exist. Implement a compatible adapter or working fallbackCommand; command fallback does not supply weights. Run one ESC replacement. No SQL/items are required.
 
-## 3. Prepare data and items
+## Database
 
-No separate SQL file is included; see the resource database initialization where applicable.
+No SQL tables.
 
-Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
+| Resource-owned table |
+| -------------------- |
 
-## 4. Configure and verify
+## Staff ACE
 
-The bridge reads inventory items but has no UI-open or weight API. Configure Inventory.command or a confirmed client Inventory.open hook; getWeight is a local hook. Unsupported balances show as unavailable. Service counts use duty but are not currently rendered by the UI.
+Normal player use needs no additional product ACE; see restricted developer setup where relevant.
 
-Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.
+Source: manifest/config and loaded server database/bridge code.

@@ -1,37 +1,22 @@
----
-description: "Dependencies and upgrade steps for Advanced Cablecar 1.8.0."
----
-
-# Advanced Cablecar — Installation
-
-{% hint style="info" %}
-Use the bridge release **1.8.0** with **mm_bridge 0.3.0+**. External providers are not included.
-{% endhint %}
-
-## 1. Prepare the resource
-
-Back up the current resource and database. Keep the folder named `advanced_cablecar`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
-
-## 2. Start dependencies
-
-Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+# Installation
 
 ```cfg
 ensure ox_lib
-ensure mm_bridge
+ensure qbx_core
 ensure advanced_cablecar
 ```
 
-This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
+Start qbx\_core before this resource for default qbox fares although it is not a hard dependency. Standalone mode skips money deduction; it does not add ESX/QBCore banking. ox\_target is optional/disabled; ox\_lib proximity is default. Current ticket prop is prop\_park\_ticket\_01 despite stale README text. Current UI is ox\_lib, not the previous Scaleform runtime. Preserve the included GPL v3 LICENSE and NOTICE when redistributing.
 
-## 3. Prepare data and items
+## Database
 
-No separate SQL file is included; see the resource database initialization where applicable.
+No SQL tables.
 
-Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
+| Resource-owned table |
+| -------------------- |
 
-## 4. Configure and verify
+## Staff ACE
 
-Optional targets still call ox_target directly. Ticket-machine proximity interactions work without a target provider. Config.Framework='standalone' explicitly skips fares; legacy 'qbox' selects paid bridge behavior. Framework selection in mm_bridge does not override this resource fare setting.
+Normal player use needs no additional product ACE; see restricted developer setup where relevant.
 
-Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.
+Source: manifest/config and loaded server database/bridge code.

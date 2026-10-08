@@ -1,8 +1,10 @@
-# Advanced Government — SQL and installation reference
+# SQL and installation reference
 
-Keep existing data when upgrading. Native install templates are examples for the indicated provider; merge entries, never replace your whole item registry. Source files below belong to release 2.1.0.
+The following files are included in the uploaded product. No new SQL migration or third-party schema is invented here. Fresh CREATE TABLE IF NOT EXISTS definitions do not necessarily alter older existing tables. Inventory snippets can have server/client callbacks particular to a provider; use the matching file.
 
 ## install/install.sql
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```sql
 CREATE TABLE IF NOT EXISTS `government_settings` (
@@ -284,7 +286,9 @@ CREATE TABLE IF NOT EXISTS `government_referendum_votes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-## install/migrate_v1_to_v2.sql
+## install/migrate\_v1\_to\_v2.sql
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```sql
 -- v2: Parties, campaign advertising, grants, contracts and referendums
@@ -402,7 +406,9 @@ CREATE TABLE IF NOT EXISTS `government_referendum_votes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-## install/qbx_job.lua
+## install/qbx\_job.lua
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```lua
 -- Add this entry permanently to qbx_core/shared/jobs.lua if your QBox build stores jobs there.

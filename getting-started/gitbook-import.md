@@ -1,27 +1,25 @@
-# Connect this package to GitBook
+# Import into GitBook
 
-The package contents are the repository root. Keep README.md, SUMMARY.md, .gitbook.yaml and gitbook-docs.yaml together at that root.
+This package has README.md, SUMMARY.md and .gitbook.yaml at its documentation root. Navigation explicitly lists the product guides and reference pages.
 
-## Site-wide Git Sync
+## Git Sync route
 
-1. Copy this package's contents into the documentation repository.
-2. Connect that repository and branch from GitBook's Git Sync panel.
-3. Leave **Project directory empty** when these files are at the repository root. If you upload the whole outer MM-Store-GitBook folder instead, set Project directory to MM-Store-GitBook.
-4. Import Git → GitBook initially and inspect the navigation.
-5. Review page covers, hints, tables and code blocks before publishing.
+1. Extract the package.
+2. Put the contents of MM-Store-GitBook (not an extra outer folder unless you intentionally map it) into your documentation repository.
+3. In your GitBook space, connect the GitHub/GitLab repository using Git Sync.
+4. Map the correct directory and choose the initial Git-to-GitBook import direction so these documents become the starting content.
+5. Check sidebar hierarchy, code blocks/tables and internal links, then publish through your GitBook account.
 
-The supplied gitbook-docs.yaml maps one English documentation space to ./, with stable key mm-store-docs. The supplied .gitbook.yaml maps README.md and SUMMARY.md. On an existing site that already has a mapping, preserve its current space key instead of replacing it with this new starter key: changing a key replaces the space and can break links to its existing ID.
+The bundled YAML uses root ./, readme README.md, summary SUMMARY.md. If using a docs subfolder, map/set root consistently; avoid paths accidentally repeating docs/docs.
 
-If GitBook says gitbook-docs.yaml does not exist, check the selected branch and Project directory. .gitbook.yaml alone is the space config, not the site config.
+## ZIP import alternative
 
-## Branding
+GitBook also documents multi-page Markdown/HTML ZIP import. Navigation behavior may differ from Git Sync, so check ordering/nesting after import. Git Sync is the preferred route for maintaining this explicit SUMMARY hierarchy.
 
-Follow [visual setup](visual-setup.md). Repository content includes the cover, hierarchy and page styling; the published site's colors, navigation logo, fonts and theme are applied through GitBook Customization. The local preview does not change online settings.
+Official references checked during creation:
 
-Official references:
+* [Content configuration](https://gitbook.com/docs/docs-as-code/git-sync/content-configuration)
+* [Git Sync import guide](https://gitbook.com/docs/guides/editing-and-publishing-documentation/import-or-migrate-your-content-to-gitbook-with-git-sync)
+* [Content migration/import](https://gitbook.com/docs/getting-started/import)
 
-- [Content configuration](https://gitbook.com/docs/docs-as-code/git-sync/content-configuration)
-- [Site-wide monorepos and Project directory](https://gitbook.com/docs/docs-as-code/git-sync/monorepos)
-- [Theme customization](https://gitbook.com/docs/guides/customizing-your-site/how-to-customize-your-sites-theme)
-
-This deliverable prepares the files. It does not push a repository, edit a signed-in GitBook site or publish it.
+Account setup, subscription capabilities and publishing are managed in GitBook. This deliverable does not create an online space, sign in or upload to an external repository.

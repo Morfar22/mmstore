@@ -1,22 +1,14 @@
----
-description: "Current configuration excerpts for Advanced Pausemenu."
----
+# Configuration
 
-# Advanced Pausemenu — Configuration
+Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
 
-Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **5.2.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
-
-## Config
-
-Source file: `config.lua`.
-
-```lua
-Config = {}
-```
+All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
 
 ## Config.ServerName
 
-Source file: `config.lua`.
+Pause menu branding; change shipped NORDISK RP text.
+
+Source: `config.lua`, line 3.
 
 ```lua
 Config.ServerName = 'NORDISK RP'
@@ -24,7 +16,9 @@ Config.ServerName = 'NORDISK RP'
 
 ## Config.ServerTagline
 
-Source file: `config.lua`.
+Controls server tagline. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 4.
 
 ```lua
 Config.ServerTagline = 'ROLEPLAY'
@@ -32,7 +26,9 @@ Config.ServerTagline = 'ROLEPLAY'
 
 ## Config.ReplaceDefaultPause
 
-Source file: `config.lua`.
+Controls replace default pause. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 5.
 
 ```lua
 Config.ReplaceDefaultPause = true
@@ -42,7 +38,9 @@ Config.ReplaceDefaultPause = true
 
 ## Config.Theme
 
-Source file: `config.lua`.
+Controls theme. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 8.
 
 ```lua
 Config.Theme = {
@@ -55,7 +53,9 @@ Config.Theme = {
 
 ## Config.Blur
 
-Source file: `config.lua`.
+Controls blur. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 15.
 
 ```lua
 Config.Blur = true
@@ -63,7 +63,9 @@ Config.Blur = true
 
 ## Config.Services
 
-Source file: `config.lua`.
+Pause menu exact service job names.
+
+Source: `config.lua`, line 17.
 
 ```lua
 Config.Services = {
@@ -74,21 +76,22 @@ Config.Services = {
 
 ## Config.Inventory
 
-Source file: `config.lua`.
+Actual inventory adapter/requirements; string/provider alone does not implement a new adapter.
+
+Source: `config.lua`, line 22.
 
 ```lua
 Config.Inventory = {
-    enabled = true,
-    command = 'inventory', -- exact command registered by YOUR inventory resource
-    open = nil, -- optional client function() returning true only on confirmed opening
-    getWeight = nil, -- optional client function() returning current,max in grams
-    allowWithoutInventory = false, -- enable only for a custom UI without a bridge inventory adapter
+    resource = 'ox_inventory',
+    fallbackCommand = 'inventory',
 }
 ```
 
 ## Config.Commands
 
-Source file: `config.lua`.
+Player/staff command names; actual registrations are in the commands guide/reference.
+
+Source: `config.lua`, line 27.
 
 ```lua
 Config.Commands = {
@@ -100,7 +103,9 @@ Config.Commands = {
 
 ## Config.FAQ
 
-Source file: `config.lua`.
+Pause menu content entries; translate/customize.
+
+Source: `config.lua`, line 33.
 
 ```lua
 Config.FAQ = {
@@ -124,7 +129,9 @@ Config.FAQ = {
 
 ## Config.Updates
 
-Source file: `config.lua`.
+Pause menu editorial update entries, not automatic changelog fetching.
+
+Source: `config.lua`, line 51.
 
 ```lua
 Config.Updates = {
@@ -143,7 +150,9 @@ Config.Updates = {
 
 ## Config.Waypoints
 
-Source file: `config.lua`.
+Pause menu GPS destinations.
+
+Source: `config.lua`, line 64.
 
 ```lua
 Config.Waypoints = {

@@ -1,39 +1,30 @@
----
-description: "Dependencies and upgrade steps for Advanced Yacht 5.2.0."
----
-
-# Advanced Yacht — Installation
-
-{% hint style="info" %}
-Use the bridge release **5.2.0** with **mm_bridge 0.3.0+**. External providers are not included.
-{% endhint %}
-
-## 1. Prepare the resource
-
-Back up the current resource and database. Keep the folder named `advanced_yacht`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
-
-## 2. Start dependencies
-
-Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+# Installation
 
 ```cfg
-ensure ox_lib
 ensure oxmysql
-ensure mm_bridge
-ensure /onesync
+ensure ox_lib
+ensure qbx_core
+ensure ox_inventory
+ensure ox_target
 ensure advanced_yacht
 ```
 
-This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
+All five manifest dependencies, including ox\_inventory, are required. No TGIANN stash bridge is supplied. Configure broker/economy and appearance (defaults to illenium-appearance; qb-clothing/custom/none alternatives). Supply the appearance resource. Yacht uses Rockstar static IPLs/props and scripted cameras, not a custom drivable yacht or story cutscene asset. Vehicle add-ons are bought separately.
 
-## 3. Prepare data and items
+## Database
 
-No separate SQL file is included; see the resource database initialization where applicable.
+Automatic creation exists. Optional manual schema: `install.sql`.
 
-Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
+| Resource-owned table              |
+| --------------------------------- |
+| `advanced_yacht_properties`       |
+| `advanced_yacht_property_access`  |
+| `advanced_yacht_vehicle_upgrades` |
 
-## 4. Configure and verify
+## Staff ACE
 
-Items and money use the bridge. Stashes are a local secured extension: ox_inventory and TGIANN are provided; QB/custom stash support requires an adapter with real open/transfer controls. Framework changes do not migrate yacht ownership or stash contents.
+```cfg
+add_ace group.admin advanced_yacht.admin allow
+```
 
-Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.
+Source: manifest/config and loaded server database/bridge code.

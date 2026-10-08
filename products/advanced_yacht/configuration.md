@@ -1,22 +1,14 @@
----
-description: "Current configuration excerpts for Advanced Yacht."
----
+# Configuration
 
-# Advanced Yacht — Configuration
+Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
 
-Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **5.2.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
-
-## Config
-
-Source file: `config.lua`.
-
-```lua
-Config = {}
-```
+All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
 
 ## Config.Locale
 
-Source file: `config.lua`.
+Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
+
+Source: `config.lua`, line 3.
 
 ```lua
 Config.Locale = 'da' -- da / en
@@ -24,7 +16,9 @@ Config.Locale = 'da' -- da / en
 
 ## Config.Currency
 
-Source file: `config.lua`.
+Controls currency. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 4.
 
 ```lua
 Config.Currency = 'DKK'
@@ -32,25 +26,19 @@ Config.Currency = 'DKK'
 
 ## Config.MoneyAccount
 
-Source file: `config.lua`.
+Controls money account. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 5.
 
 ```lua
 Config.MoneyAccount = 'bank'
--- Framework/target selected in mm_bridge. Storage follows its selected inventory.
-```
-
-## Config.StorageBridge
-
-Source file: `config.lua`.
-
-```lua
-Config.StorageBridge = { enabled = true, resources = { ox_inventory = 'ox_inventory', tgiann = 'tgiann-inventory' }, custom = nil }
--- custom: trusted server adapter implementing install(authorize), register(data), open(source,data).
 ```
 
 ## Config.AdminAce
 
-Source file: `config.lua`.
+Controls admin ace. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 6.
 
 ```lua
 Config.AdminAce = 'advanced_yacht.admin'
@@ -58,7 +46,9 @@ Config.AdminAce = 'advanced_yacht.admin'
 
 ## Config.MaxYachtsPerCharacter
 
-Source file: `config.lua`.
+Controls max yachts per character. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 7.
 
 ```lua
 Config.MaxYachtsPerCharacter = 1
@@ -66,7 +56,9 @@ Config.MaxYachtsPerCharacter = 1
 
 ## Config.RelocationFee
 
-Source file: `config.lua`.
+Controls relocation fee. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 8.
 
 ```lua
 Config.RelocationFee = 25000
@@ -74,7 +66,9 @@ Config.RelocationFee = 25000
 
 ## Config.RenameFee
 
-Source file: `config.lua`.
+Controls rename fee. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 9.
 
 ```lua
 Config.RenameFee = 25000
@@ -82,7 +76,9 @@ Config.RenameFee = 25000
 
 ## Config.FlagChangeFee
 
-Source file: `config.lua`.
+Controls flag change fee. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 10.
 
 ```lua
 Config.FlagChangeFee = 25000
@@ -90,7 +86,9 @@ Config.FlagChangeFee = 25000
 
 ## Config.PackageDowngradeFees
 
-Source file: `config.lua`.
+Controls package downgrade fees. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 11.
 
 ```lua
 Config.PackageDowngradeFees = { orion = 500000, pisces = 1000000 } -- GTA Online-style post-purchase downgrade fees
@@ -98,7 +96,9 @@ Config.PackageDowngradeFees = { orion = 500000, pisces = 1000000 } -- GTA Online
 
 ## Config.HornCooldown
 
-Source file: `config.lua`.
+Controls horn cooldown. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 12.
 
 ```lua
 Config.HornCooldown = 12 -- seconds
@@ -106,7 +106,9 @@ Config.HornCooldown = 12 -- seconds
 
 ## Config.RelocationCooldown
 
-Source file: `config.lua`.
+Controls relocation cooldown. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 13.
 
 ```lua
 Config.RelocationCooldown = 60 -- seconds
@@ -114,7 +116,9 @@ Config.RelocationCooldown = 60 -- seconds
 
 ## Config.MaxGuests
 
-Source file: `config.lua`.
+Controls max guests. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 14.
 
 ```lua
 Config.MaxGuests = 10
@@ -122,7 +126,9 @@ Config.MaxGuests = 10
 
 ## Config.StorageDistance
 
-Source file: `config.lua`.
+Controls storage distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 15.
 
 ```lua
 Config.StorageDistance = 85.0
@@ -130,7 +136,9 @@ Config.StorageDistance = 85.0
 
 ## Config.InteractionDistance
 
-Source file: `config.lua`.
+Controls interaction distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 16.
 
 ```lua
 Config.InteractionDistance = 120.0
@@ -138,7 +146,9 @@ Config.InteractionDistance = 120.0
 
 ## Config.ShowPublicYachtBlips
 
-Source file: `config.lua`.
+Controls show public yacht blips. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 17.
 
 ```lua
 Config.ShowPublicYachtBlips = true
@@ -146,7 +156,9 @@ Config.ShowPublicYachtBlips = true
 
 ## Config.YachtBlipSprite
 
-Source file: `config.lua`.
+Controls yacht blip sprite. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 18.
 
 ```lua
 Config.YachtBlipSprite = 455
@@ -154,7 +166,9 @@ Config.YachtBlipSprite = 455
 
 ## Config.YachtBlipColour
 
-Source file: `config.lua`.
+Controls yacht blip colour. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 19.
 
 ```lua
 Config.YachtBlipColour = 3
@@ -162,7 +176,9 @@ Config.YachtBlipColour = 3
 
 ## Config.YachtBlipScale
 
-Source file: `config.lua`.
+Controls yacht blip scale. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 20.
 
 ```lua
 Config.YachtBlipScale = 0.72
@@ -170,7 +186,9 @@ Config.YachtBlipScale = 0.72
 
 ## Config.FastTravel
 
-Source file: `config.lua`.
+Controls fast travel. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 21.
 
 ```lua
 Config.FastTravel = true
@@ -178,7 +196,9 @@ Config.FastTravel = true
 
 ## Config.FastTravelFadeMs
 
-Source file: `config.lua`.
+Controls fast travel fade ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 22.
 
 ```lua
 Config.FastTravelFadeMs = 650
@@ -189,7 +209,9 @@ Config.FastTravelFadeMs = 650
 
 ## Config.Cinematics
 
-Source file: `config.lua`.
+Controls cinematics. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 26.
 
 ```lua
 Config.Cinematics = {
@@ -228,7 +250,9 @@ Config.Cinematics = {
 
 ## Config.OxLibUI
 
-Source file: `config.lua`.
+Controls ox lib u i. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 58.
 
 ```lua
 Config.OxLibUI = {
@@ -244,7 +268,9 @@ Config.OxLibUI = {
 
 ## Config.HullName
 
-Source file: `config.lua`.
+Controls hull name. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 67.
 
 ```lua
 Config.HullName = {
@@ -256,7 +282,9 @@ Config.HullName = {
 
 ## Config.DefenseRadius
 
-Source file: `config.lua`.
+Controls defense radius. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 73.
 
 ```lua
 Config.DefenseRadius = 150.0
@@ -264,7 +292,9 @@ Config.DefenseRadius = 150.0
 
 ## Config.DefenseWeaponSafeRadius
 
-Source file: `config.lua`.
+Controls defense weapon safe radius. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 74.
 
 ```lua
 Config.DefenseWeaponSafeRadius = 82.0
@@ -272,7 +302,9 @@ Config.DefenseWeaponSafeRadius = 82.0
 
 ## Config.DefenseAircraftWarningSeconds
 
-Source file: `config.lua`.
+Controls defense aircraft warning seconds. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 75.
 
 ```lua
 Config.DefenseAircraftWarningSeconds = 5
@@ -280,7 +312,9 @@ Config.DefenseAircraftWarningSeconds = 5
 
 ## Config.DefenseAircraftStrikeCooldown
 
-Source file: `config.lua`.
+Controls defense aircraft strike cooldown. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 76.
 
 ```lua
 Config.DefenseAircraftStrikeCooldown = 8
@@ -288,7 +322,9 @@ Config.DefenseAircraftStrikeCooldown = 8
 
 ## Config.Debug
 
-Source file: `config.lua`.
+Diagnostic verbosity; keep disabled outside a reproduction.
+
+Source: `config.lua`, line 77.
 
 ```lua
 Config.Debug = false
@@ -296,7 +332,9 @@ Config.Debug = false
 
 ## Config.RemoveUnusedRockstarYachts
 
-Source file: `config.lua`.
+Controls remove unused rockstar yachts. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 78.
 
 ```lua
 Config.RemoveUnusedRockstarYachts = true -- keep only DB-owned yachts visible
@@ -306,7 +344,9 @@ Config.RemoveUnusedRockstarYachts = true -- keep only DB-owned yachts visible
 
 ## Config.Appearance
 
-Source file: `config.lua`.
+Optional yacht wardrobe adapter.
+
+Source: `config.lua`, line 81.
 
 ```lua
 Config.Appearance = 'illenium-appearance' -- illenium-appearance / qb-clothing / custom / none
@@ -314,7 +354,9 @@ Config.Appearance = 'illenium-appearance' -- illenium-appearance / qb-clothing /
 
 ## Config.CustomWardrobeEvent
 
-Source file: `config.lua`.
+Controls custom wardrobe event. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 82.
 
 ```lua
 Config.CustomWardrobeEvent = ''
@@ -322,7 +364,9 @@ Config.CustomWardrobeEvent = ''
 
 ## Config.Broker
 
-Source file: `config.lua`.
+Controls broker. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 84.
 
 ```lua
 Config.Broker = {
@@ -337,7 +381,9 @@ Config.Broker = {
 
 ## Config.Packages
 
-Source file: `config.lua`.
+Yacht purchase/storage/features; vehicle upgrades not bundled.
+
+Source: `config.lua`, line 92.
 
 ```lua
 Config.Packages = {
@@ -382,7 +428,9 @@ Config.Packages = {
 
 ## Config.Moorings
 
-Source file: `config.lua`.
+Static Rockstar berth geometry; keep IDs consistent with IPLs.
+
+Source: `config.lua`, line 130.
 
 ```lua
 Config.Moorings = {
@@ -454,7 +502,9 @@ Config.Moorings = {
 
 ## Config.BoardCandidates
 
-Source file: `config.lua`.
+Controls board candidates. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 195.
 
 ```lua
 Config.BoardCandidates = {
@@ -470,7 +520,9 @@ Config.BoardCandidates = {
 
 ## Config.BoardMinHeightAboveAnchor
 
-Source file: `config.lua`.
+Controls board min height above anchor. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 204.
 
 ```lua
 Config.BoardMinHeightAboveAnchor = -1.0
@@ -478,7 +530,9 @@ Config.BoardMinHeightAboveAnchor = -1.0
 
 ## Config.BoardMaxHeightAboveAnchor
 
-Source file: `config.lua`.
+Controls board max height above anchor. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 205.
 
 ```lua
 Config.BoardMaxHeightAboveAnchor = 24.0
@@ -486,7 +540,9 @@ Config.BoardMaxHeightAboveAnchor = 24.0
 
 ## Config.BoardFallbackHeight
 
-Source file: `config.lua`.
+Controls board fallback height. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 206.
 
 ```lua
 Config.BoardFallbackHeight = 6.30
@@ -494,7 +550,9 @@ Config.BoardFallbackHeight = 6.30
 
 ## Config.BoardFallbackOffset
 
-Source file: `config.lua`.
+Controls board fallback offset. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 207.
 
 ```lua
 Config.BoardFallbackOffset = vec3(-30.82, -1.87, 6.30)
@@ -502,7 +560,9 @@ Config.BoardFallbackOffset = vec3(-30.82, -1.87, 6.30)
 
 ## Config.ShoreReturn
 
-Source file: `config.lua`.
+Controls shore return. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 208.
 
 ```lua
 Config.ShoreReturn = vec4(-795.55, -1507.93, 1.60, 112.0)
@@ -512,7 +572,9 @@ Config.ShoreReturn = vec4(-795.55, -1507.93, 1.60, 112.0)
 
 ## Config.GTAO
 
-Source file: `config.lua`.
+Yacht local geometry, jacuzzi surface and fleet slots.
+
+Source: `config.lua`, line 211.
 
 ```lua
 Config.GTAO = {
@@ -590,7 +652,9 @@ Config.GTAO = {
 
 ## Config.YachtVehicleShop
 
-Source file: `config.lua`.
+Paid fleet catalog/package allowance/slot groups/quantity/resale.
+
+Source: `config.lua`, line 282.
 
 ```lua
 Config.YachtVehicleShop = {
@@ -649,7 +713,9 @@ Config.YachtVehicleShop = {
 
 ## Config.AutoSpawnPurchasedFleetOnBoard
 
-Source file: `config.lua`.
+Controls auto spawn purchased fleet on board. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 335.
 
 ```lua
 Config.AutoSpawnPurchasedFleetOnBoard = true
@@ -657,7 +723,9 @@ Config.AutoSpawnPurchasedFleetOnBoard = true
 
 ## Config.SpawnRockstarYachtStaff
 
-Source file: `config.lua`.
+Controls spawn rockstar yacht staff. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 336.
 
 ```lua
 Config.SpawnRockstarYachtStaff = true
@@ -665,7 +733,9 @@ Config.SpawnRockstarYachtStaff = true
 
 ## Config.FreezePurchasedFleetWhenEmpty
 
-Source file: `config.lua`.
+Controls freeze purchased fleet when empty. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 337.
 
 ```lua
 Config.FreezePurchasedFleetWhenEmpty = true
@@ -673,7 +743,9 @@ Config.FreezePurchasedFleetWhenEmpty = true
 
 ## Config.YachtAccessModes
 
-Source file: `config.lua`.
+Controls yacht access modes. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 338.
 
 ```lua
 Config.YachtAccessModes = {
@@ -689,7 +761,9 @@ Config.YachtAccessModes = {
 
 ## Config.VehicleAccessModes
 
-Source file: `config.lua`.
+Controls vehicle access modes. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 347.
 
 ```lua
 Config.VehicleAccessModes = {
@@ -706,7 +780,9 @@ Config.VehicleAccessModes = {
 
 ## Config.HotTubClothingModes
 
-Source file: `config.lua`.
+Controls hot tub clothing modes. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 357.
 
 ```lua
 Config.HotTubClothingModes = {
@@ -717,7 +793,9 @@ Config.HotTubClothingModes = {
 
 ## Config.DefenseExclusionModes
 
-Source file: `config.lua`.
+Controls defense exclusion modes. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 361.
 
 ```lua
 Config.DefenseExclusionModes = {
@@ -736,7 +814,9 @@ Config.DefenseExclusionModes = {
 
 ## Config.YachtColors
 
-Source file: `config.lua`.
+Controls yacht colors. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 373.
 
 ```lua
 Config.YachtColors = {
@@ -762,7 +842,9 @@ Config.YachtColors = {
 
 ## Config.TextureVariants
 
-Source file: `config.lua`.
+Controls texture variants. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 392.
 
 ```lua
 Config.TextureVariants = Config.YachtColors -- backwards compatibility
@@ -770,7 +852,9 @@ Config.TextureVariants = Config.YachtColors -- backwards compatibility
 
 ## Config.Fittings
 
-Source file: `config.lua`.
+Controls fittings. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 394.
 
 ```lua
 Config.Fittings = {
@@ -784,7 +868,9 @@ Config.Fittings = {
 
 ## Config.Lighting
 
-Source file: `config.lua`.
+Controls lighting. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 401.
 
 ```lua
 Config.Lighting = {
@@ -803,7 +889,9 @@ Config.Lighting = {
 
 ## Config.Flags
 
-Source file: `config.lua`.
+Controls flags. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 413.
 
 ```lua
 Config.Flags = {
@@ -862,7 +950,9 @@ Config.Flags = {
 
 ## Config.Assembly
 
-Source file: `config.lua`.
+Static yacht prop transforms; test custom changes against native IPLs.
+
+Source: `config.lua`, line 465.
 
 ```lua
 Config.Assembly = {
@@ -891,7 +981,9 @@ Config.Assembly = {
 
 ## Config.RockstarProps
 
-Source file: `config.lua`.
+Controls rockstar props. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 488.
 
 ```lua
 Config.RockstarProps = {
@@ -926,7 +1018,9 @@ Config.RockstarProps = {
 
 ## Config.Text
 
-Source file: `config.lua`.
+Controls text. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 517.
 
 ```lua
 Config.Text = {
@@ -955,14 +1049,4 @@ Config.Text = {
         debug_sync = 'Yacht world synchronized.', deleted = 'Yacht deleted.', given = 'Yacht created for player.'
     }
 }
-
-function L(key)
-    local lang = Config.Text[Config.Locale] or Config.Text.en
-    return lang[key] or key
-end
-
-function YachtIpls(groupId, slotId)
-    local prefix = ('apa_yacht_grp%02d_%d'):format(groupId, slotId)
-    return { prefix, prefix .. '_int', prefix .. '_lod' }
-end
 ```

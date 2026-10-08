@@ -1,21 +1,28 @@
-# Advanced Government — Exports and integrations
+# Exports and integrations
 
-{% hint style="info" %}
-Server exports are for trusted resources. Enforce caller authorization and source/amount checks. Client menu actions are not proof of payment or permission. Internal events are not a public adapter API.
-{% endhint %}
+## Server exports
 
-Default native job synchronization is QBox only; QBCore/ESX/standalone use SQL political roles unless custom job sync is configured. Default society settlement still needs NRP resources/schema or an atomic custom society adapter. Payroll tax is an opt-in export, not an automatically installed payroll hook.
+| Export                  | Parameters               | Result / behavior                                                     |
+| ----------------------- | ------------------------ | --------------------------------------------------------------------- |
+| GetTaxRate              | taxKey                   | Fraction, e.g. 0.18; missing rate 0                                   |
+| GetTaxPercent           | taxKey                   | Percentage, e.g. 18                                                   |
+| GetTreasuryBalance      | none                     | Current balance                                                       |
+| AddTreasuryMoney        | amount, reason, metadata | Treasury transfer result; does not itself withdraw a payer            |
+| RemoveTreasuryMoney     | amount, reason, metadata | Treasury transfer result; does not itself credit a recipient          |
+| AddSocietyMoney         | jobName, amount          | Credits NRP shared account directly; no treasury debit in this export |
+| GetMayor                | none                     | Current office row or no active mayor                                 |
+| HasGovernmentPermission | source, permission       | Permission check                                                      |
+| IsGovernmentEmployee    | source                   | Current mayor/cabinet membership                                      |
+| WithholdIncomeTax       | source, gross            | Tax charged; only invoking resource qbx\_core accepted                |
 
-| Export | Side | Arguments | Implementation |
-| --- | --- | --- | --- |
-| `AddSocietyMoney` | server | `jobName, amount` | `server/main.lua` |
-| `GetTaxRate` | server | `taxKey` | `server/main.lua` |
-| `GetTaxPercent` | server | `taxKey` | `server/main.lua` |
-| `GetTreasuryBalance` | server | `` | `server/main.lua` |
-| `AddTreasuryMoney` | server | `amount, reason, metadata` | `server/main.lua` |
-| `RemoveTreasuryMoney` | server | `amount, reason, metadata` | `server/main.lua` |
-| `HasGovernmentPermission` | server | `source, permission` | `server/main.lua` |
-| `IsGovernmentEmployee` | server | `source` | `server/main.lua` |
-| `WithholdIncomeTax` | server | `source, gross` | `server/nrp_bridge.lua` |
+```lua
+-- SERVER: read one rate.
+local fraction = exports.advanced_government:GetTaxRate('income')
+local percent = exports.advanced_government:GetTaxPercent('income')
+```
 
-Dynamic exports are described in their specialized integration guides; this literal index is not an exhaustive list of dynamically generated names. Consult [bridge integration](bridge.md) for return contracts and provider limitations, and [internal registrations](events.md) for module routing.
+Amounts must be positive finite integers within MaxTransactionAmount. Add/RemoveTreasuryMoney operate the treasury ledger, not a complete standalone bank exchange. GetMayor returns government\_office data; distinguish SQL row/term metadata from a player object.
+
+See the wage integration guide before calling WithholdIncomeTax. Budget/tax UI alone does not patch any wage or purchase script. Internal callbacks validate caller/permission/inputs and are listed for maintainers, not as a public grant/award API.
+
+Source: export declarations and loaded framework/inventory/billing bridges in the supplied product.

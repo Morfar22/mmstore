@@ -1,22 +1,14 @@
----
-description: "Current configuration excerpts for Advanced Car Radio."
----
+# Configuration
 
-# Advanced Car Radio — Configuration
+Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
 
-Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.2.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
-
-## Config
-
-Source file: `shared/config.lua`.
-
-```lua
-Config = {}
-```
+All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
 
 ## Config.Locale
 
-Source file: `shared/config.lua`.
+Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
+
+Source: `shared/config.lua`, line 3.
 
 ```lua
 Config.Locale = 'da'
@@ -24,7 +16,9 @@ Config.Locale = 'da'
 
 ## Config.Debug
 
-Source file: `shared/config.lua`.
+Diagnostic verbosity; keep disabled outside a reproduction.
+
+Source: `shared/config.lua`, line 4.
 
 ```lua
 Config.Debug = false
@@ -32,7 +26,9 @@ Config.Debug = false
 
 ## Config.OpenCommand
 
-Source file: `shared/config.lua`.
+Controls open command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 6.
 
 ```lua
 Config.OpenCommand = 'carradio'
@@ -40,7 +36,9 @@ Config.OpenCommand = 'carradio'
 
 ## Config.DefaultKey
 
-Source file: `shared/config.lua`.
+Controls default key. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 7.
 
 ```lua
 Config.DefaultKey = 'F7'
@@ -48,7 +46,9 @@ Config.DefaultKey = 'F7'
 
 ## Config.RequireVehicle
 
-Source file: `shared/config.lua`.
+Controls require vehicle. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 8.
 
 ```lua
 Config.RequireVehicle = true
@@ -56,7 +56,9 @@ Config.RequireVehicle = true
 
 ## Config.RequireDriverToControl
 
-Source file: `shared/config.lua`.
+Controls require driver to control. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 9.
 
 ```lua
 Config.RequireDriverToControl = false
@@ -64,7 +66,9 @@ Config.RequireDriverToControl = false
 
 ## Config.AllowPassengers
 
-Source file: `shared/config.lua`.
+Controls allow passengers. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 10.
 
 ```lua
 Config.AllowPassengers = true
@@ -74,7 +78,9 @@ Config.AllowPassengers = true
 
 ## Config.MaxDistance
 
-Source file: `shared/config.lua`.
+Controls max distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 13.
 
 ```lua
 Config.MaxDistance = 32.0
@@ -82,7 +88,9 @@ Config.MaxDistance = 32.0
 
 ## Config.ActivationDistance
 
-Source file: `shared/config.lua`.
+Controls activation distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 14.
 
 ```lua
 Config.ActivationDistance = 48.0
@@ -90,7 +98,9 @@ Config.ActivationDistance = 48.0
 
 ## Config.PositionRefreshMs
 
-Source file: `shared/config.lua`.
+Controls position refresh ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 15.
 
 ```lua
 Config.PositionRefreshMs = 250
@@ -98,7 +108,9 @@ Config.PositionRefreshMs = 250
 
 ## Config.DefaultVehicleVolume
 
-Source file: `shared/config.lua`.
+Controls default vehicle volume. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 16.
 
 ```lua
 Config.DefaultVehicleVolume = 0.65
@@ -110,7 +122,9 @@ Config.DefaultVehicleVolume = 0.65
 
 ## Config.CabinLeakage
 
-Source file: `shared/config.lua`.
+Source vehicle sound leakage multipliers, independent of listener volumes.
+
+Source: `shared/config.lua`, line 21.
 
 ```lua
 Config.CabinLeakage = {
@@ -130,7 +144,9 @@ Config.CabinLeakage = {
 
 ## Config.DefaultSettings
 
-Source file: `shared/config.lua`.
+Per-character listening preferences and Now Playing.
+
+Source: `shared/config.lua`, line 34.
 
 ```lua
 Config.DefaultSettings = {
@@ -143,7 +159,9 @@ Config.DefaultSettings = {
 
 ## Config.NowPlayingDurationMs
 
-Source file: `shared/config.lua`.
+Controls now playing duration ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 41.
 
 ```lua
 Config.NowPlayingDurationMs = 6500
@@ -151,7 +169,9 @@ Config.NowPlayingDurationMs = 6500
 
 ## Config.PersistenceIntervalSeconds
 
-Source file: `shared/config.lua`.
+Controls persistence interval seconds. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 42.
 
 ```lua
 Config.PersistenceIntervalSeconds = 15
@@ -159,7 +179,9 @@ Config.PersistenceIntervalSeconds = 15
 
 ## Config.ResumeAfterRestart
 
-Source file: `shared/config.lua`.
+Controls resume after restart. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 43.
 
 ```lua
 Config.ResumeAfterRestart = true
@@ -167,7 +189,9 @@ Config.ResumeAfterRestart = true
 
 ## Config.MaxPlaylists
 
-Source file: `shared/config.lua`.
+Controls max playlists. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 45.
 
 ```lua
 Config.MaxPlaylists = 30
@@ -175,7 +199,9 @@ Config.MaxPlaylists = 30
 
 ## Config.MaxTracksPerPlaylist
 
-Source file: `shared/config.lua`.
+Controls max tracks per playlist. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 46.
 
 ```lua
 Config.MaxTracksPerPlaylist = 250
@@ -183,7 +209,9 @@ Config.MaxTracksPerPlaylist = 250
 
 ## Config.MaxSavedTracksPerVehicle
 
-Source file: `shared/config.lua`.
+Controls max saved tracks per vehicle. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 47.
 
 ```lua
 Config.MaxSavedTracksPerVehicle = 150
@@ -191,7 +219,9 @@ Config.MaxSavedTracksPerVehicle = 150
 
 ## Config.MaxQueueSize
 
-Source file: `shared/config.lua`.
+Controls max queue size. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 48.
 
 ```lua
 Config.MaxQueueSize = 250
@@ -201,7 +231,9 @@ Config.MaxQueueSize = 250
 
 ## Config.ResolveYouTubeMetadata
 
-Source file: `shared/config.lua`.
+Controls resolve you tube metadata. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 51.
 
 ```lua
 Config.ResolveYouTubeMetadata = true
@@ -212,7 +244,9 @@ Config.ResolveYouTubeMetadata = true
 
 ## Config.AllowedHosts
 
-Source file: `shared/config.lua`.
+Media URL host allowlist; empty accepts valid HTTP/HTTPS.
+
+Source: `shared/config.lua`, line 55.
 
 ```lua
 Config.AllowedHosts = {}
@@ -220,7 +254,9 @@ Config.AllowedHosts = {}
 
 ## Config.MaxUrlLength
 
-Source file: `shared/config.lua`.
+Controls max url length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 56.
 
 ```lua
 Config.MaxUrlLength = 1024
@@ -228,7 +264,9 @@ Config.MaxUrlLength = 1024
 
 ## Config.MaxTitleLength
 
-Source file: `shared/config.lua`.
+Controls max title length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 57.
 
 ```lua
 Config.MaxTitleLength = 160
@@ -236,7 +274,9 @@ Config.MaxTitleLength = 160
 
 ## Config.MaxArtistLength
 
-Source file: `shared/config.lua`.
+Controls max artist length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 58.
 
 ```lua
 Config.MaxArtistLength = 120
@@ -244,7 +284,9 @@ Config.MaxArtistLength = 120
 
 ## Config.MaxArtworkLength
 
-Source file: `shared/config.lua`.
+Controls max artwork length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 59.
 
 ```lua
 Config.MaxArtworkLength = 1024
@@ -254,7 +296,9 @@ Config.MaxArtworkLength = 1024
 
 ## Config.DriverOnlyOpen
 
-Source file: `shared/config.lua`.
+Controls driver only open. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `shared/config.lua`, line 62.
 
 ```lua
 Config.DriverOnlyOpen = false

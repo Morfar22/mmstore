@@ -1,8 +1,10 @@
-# Advanced Vet DLC — SQL and installation reference
+# SQL and installation reference
 
-Keep existing data when upgrading. Native install templates are examples for the indicated provider; merge entries, never replace your whole item registry. Source files below belong to release 15.11.0.
+The following files are included in the uploaded product. No new SQL migration or third-party schema is invented here. Fresh CREATE TABLE IF NOT EXISTS definitions do not necessarily alter older existing tables. Inventory snippets can have server/client callbacks particular to a provider; use the matching file.
 
-## install/ox_inventory_items.lua
+## install/ox\_inventory\_items.lua
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```lua
 return {
@@ -161,7 +163,9 @@ return {
 }
 ```
 
-## install/qbcore_items.lua
+## install/qbcore\_items.lua
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```lua
 return {
@@ -311,7 +315,9 @@ return {
 }
 ```
 
-## install/tgiann_inventory_items.lua
+## install/tgiann\_inventory\_items.lua
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```lua
 return {
@@ -471,7 +477,9 @@ return {
 }
 ```
 
-## sql/advanced_vet.sql
+## sql/advanced\_vet.sql
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```sql
 CREATE TABLE IF NOT EXISTS `advanced_vet_patients` (
@@ -679,7 +687,9 @@ CREATE TABLE IF NOT EXISTS `advanced_vet_placement_overrides` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
-## sql/v15_6_1_migration.sql
+## sql/v15\_6\_1\_migration.sql
+
+Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```sql
 ALTER TABLE `advanced_vet_placement_overrides`

@@ -1,22 +1,14 @@
----
-description: "Current configuration excerpts for Advanced Government."
----
+# Configuration
 
-# Advanced Government — Configuration
+Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
 
-Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **2.1.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
-
-## Config
-
-Source file: `config.lua`.
-
-```lua
-Config = {}
-```
+All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
 
 ## Config.Locale
 
-Source file: `config.lua`.
+Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
+
+Source: `config.lua`, line 3.
 
 ```lua
 Config.Locale = 'da'
@@ -24,7 +16,9 @@ Config.Locale = 'da'
 
 ## Config.Debug
 
-Source file: `config.lua`.
+Diagnostic verbosity; keep disabled outside a reproduction.
+
+Source: `config.lua`, line 4.
 
 ```lua
 Config.Debug = false
@@ -32,7 +26,9 @@ Config.Debug = false
 
 ## Config.GovernmentJob
 
-Source file: `config.lua`.
+Controls government job. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 5.
 
 ```lua
 Config.GovernmentJob = 'government'
@@ -40,7 +36,9 @@ Config.GovernmentJob = 'government'
 
 ## Config.AdminAce
 
-Source file: `config.lua`.
+Controls admin ace. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 6.
 
 ```lua
 Config.AdminAce = 'government.admin'
@@ -48,7 +46,9 @@ Config.AdminAce = 'government.admin'
 
 ## Config.OpenCommand
 
-Source file: `config.lua`.
+Controls open command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 7.
 
 ```lua
 Config.OpenCommand = 'government'
@@ -56,7 +56,9 @@ Config.OpenCommand = 'government'
 
 ## Config.AdminCommand
 
-Source file: `config.lua`.
+Controls admin command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 8.
 
 ```lua
 Config.AdminCommand = 'govadmin'
@@ -64,7 +66,9 @@ Config.AdminCommand = 'govadmin'
 
 ## Config.CityHall
 
-Source file: `config.lua`.
+Controls city hall. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 10.
 
 ```lua
 Config.CityHall = {
@@ -77,7 +81,9 @@ Config.CityHall = {
 
 ## Config.DefaultTreasuryBalance
 
-Source file: `config.lua`.
+Controls default treasury balance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 17.
 
 ```lua
 Config.DefaultTreasuryBalance = 2500000
@@ -85,7 +91,9 @@ Config.DefaultTreasuryBalance = 2500000
 
 ## Config.CandidateDeposit
 
-Source file: `config.lua`.
+Controls candidate deposit. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 18.
 
 ```lua
 Config.CandidateDeposit = 50000
@@ -93,7 +101,9 @@ Config.CandidateDeposit = 50000
 
 ## Config.MinCharacterAgeDays
 
-Source file: `config.lua`.
+Controls min character age days. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 19.
 
 ```lua
 Config.MinCharacterAgeDays = 0 -- Set > 0 if your players table exposes a created_at field you want to enforce yourself.
@@ -101,7 +111,9 @@ Config.MinCharacterAgeDays = 0 -- Set > 0 if your players table exposes a create
 
 ## Config.VoteOncePerCharacter
 
-Source file: `config.lua`.
+Controls vote once per character. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 20.
 
 ```lua
 Config.VoteOncePerCharacter = true
@@ -109,7 +121,9 @@ Config.VoteOncePerCharacter = true
 
 ## Config.Election
 
-Source file: `config.lua`.
+Registration/campaign/voting duration and mayor term.
+
+Source: `config.lua`, line 22.
 
 ```lua
 Config.Election = {
@@ -123,7 +137,9 @@ Config.Election = {
 
 ## Config.Taxes
 
-Source file: `config.lua`.
+Government default/min/max percent values; persisted rates can outlive config changes.
+
+Source: `config.lua`, line 30.
 
 ```lua
 Config.Taxes = {
@@ -138,7 +154,9 @@ Config.Taxes = {
 
 ## Config.PublicJobs
 
-Source file: `config.lua`.
+Controls public jobs. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 39.
 
 ```lua
 Config.PublicJobs = {
@@ -154,7 +172,9 @@ Config.PublicJobs = {
 
 ## Config.CabinetRoles
 
-Source file: `config.lua`.
+Government permission sets.
+
+Source: `config.lua`, line 49.
 
 ```lua
 Config.CabinetRoles = {
@@ -168,7 +188,9 @@ Config.CabinetRoles = {
 
 ## Config.MayorPermissions
 
-Source file: `config.lua`.
+Controls mayor permissions. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 57.
 
 ```lua
 Config.MayorPermissions = {
@@ -192,7 +214,9 @@ Config.MayorPermissions = {
 
 ## Config.IncomeTaxEnabled
 
-Source file: `config.lua`.
+Controls income tax enabled. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 74.
 
 ```lua
 Config.IncomeTaxEnabled = true
@@ -200,7 +224,9 @@ Config.IncomeTaxEnabled = true
 
 ## Config.MaxTransactionAmount
 
-Source file: `config.lua`.
+Controls max transaction amount. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 75.
 
 ```lua
 Config.MaxTransactionAmount = 1000000000
@@ -208,7 +234,9 @@ Config.MaxTransactionAmount = 1000000000
 
 ## Config.PublicAccounts
 
-Source file: `config.lua`.
+Government public-job NRP ledger mapping.
+
+Source: `config.lua`, line 76.
 
 ```lua
 Config.PublicAccounts = {
@@ -222,7 +250,9 @@ Config.PublicAccounts = {
 
 ## Config.Banking
 
-Source file: `config.lua`.
+NRP adapter settings; loaded bridge still requires its schema.
+
+Source: `config.lua`, line 83.
 
 ```lua
 Config.Banking = {
@@ -235,7 +265,9 @@ Config.Banking = {
 
 ## Config.Business
 
-Source file: `config.lua`.
+Controls business. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 90.
 
 ```lua
 Config.Business = {
@@ -248,7 +280,9 @@ Config.Business = {
 
 ## Config.Parties
 
-Source file: `config.lua`.
+Controls parties. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 97.
 
 ```lua
 Config.Parties = {
@@ -260,7 +294,9 @@ Config.Parties = {
 
 ## Config.Referendums
 
-Source file: `config.lua`.
+Controls referendums. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
+
+Source: `config.lua`, line 103.
 
 ```lua
 Config.Referendums = {
@@ -272,7 +308,9 @@ Config.Referendums = {
 
 ## Config.CampaignAds
 
-Source file: `config.lua`.
+Campaign-fund-priced advertising locations.
+
+Source: `config.lua`, line 109.
 
 ```lua
 Config.CampaignAds = {
@@ -295,7 +333,9 @@ Config.MayorPermissions['campaign.manage'] = true
 
 ## Config.BusinessAccounts
 
-Source file: `config.lua`.
+Government private-concession NRP account mapping.
+
+Source: `config.lua`, line 125.
 
 ```lua
 Config.BusinessAccounts = {
@@ -304,33 +344,4 @@ Config.BusinessAccounts = {
     shopkeeper = 'downtown_247', fueler = 'ltd_little_seoul', casino = 'diamond_casino',
     themepark = 'del_perro_tivoli', taxi = 'metro_cab',
 }
-
-
--- Framework/target providers are selected in mm_bridge/config.lua.
--- auto: native QBox job sync; on other frameworks SQL government roles only.
-```
-
-## Config.JobBridge
-
-Source file: `config.lua`.
-
-```lua
-Config.JobBridge = { mode = 'auto', qboxResource = 'qbx_core', custom = nil }
--- Society settlement outside NRP needs an explicit atomic transfer adapter.
-```
-
-## Config.SocietyBridge
-
-Source file: `config.lua`.
-
-```lua
-Config.SocietyBridge = { mode = 'nrp_sql', custom = nil }
-```
-
-## Config.IncomeTaxOwners
-
-Source file: `config.lua`.
-
-```lua
-Config.IncomeTaxOwners = { ['qbx_core'] = true, ['qb-core'] = true, ['es_extended'] = true }
 ```

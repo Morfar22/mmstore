@@ -1,21 +1,29 @@
 # Frequently asked questions
 
-## Is every provider supported by every product?
+## Can every product run on QBox with TGIANN?
 
-No. The bridge supports several providers; the product must use that API and meet its own feature requirements. Cablecar's optional target and Diving's NPC still use ox_target directly. Stash hooks, needs, inventory opening and offline job administration are documented local extensions.
+Not unchanged. Smoking is TGIANN-wired; Yacht storage and optional Diving gear use ox\_inventory; Pausemenu uses generic ox-style exports and K9 sniff needs an appropriate item source. Select compatible integrations or implement/test adapters.
 
-## Can I use QBox with TGIANN?
+## Does the package include clinic maps and sounds?
 
-Configure the bridge inventory as tgiann and its exact resource name. Read your product's item-use/metadata and stash requirements. Validate TGIANN hooks against the installed version. A provider name is not proof of compatible item definitions or native UI signatures.
+No Vet clinic MLO or custom K9 ogg files is present. The configured points/names do not install assets. Rockstar base-game assets are referenced by native name. Smoking icons/definitions are missing from this source archive.
 
-## Does standalone include an economy?
+## Are the scripts modified by this documentation?
 
-No. Free/no-charge gameplay may work where explicitly supported. Paid gameplay needs a real custom economy adapter; unsupported paid operations fail. Cablecar's explicit standalone fare mode skips fares.
+No. SQL/snippets are reproduced as references, not automatically applied. Required external bridges and fixes are documented rather than silently invented.
 
-## Does changing framework migrate data?
+## Can I use commands anywhere?
 
-No. Citizen IDs, ESX character identifiers and standalone licenses differ. K9 and Vet retain legacy-license database keys by default. Plan any actual identity/inventory migration separately.
+A command can open a UI while server actions still enforce roles, proximity, active state and progression. Read the product gates and source reference.
 
-## Are the local tests a live server certification?
+## Does a config language setting translate everything?
 
-No. They check mocked integration behavior and syntax. GTA visuals/audio, SQL/schema, native inventory callbacks and real multi-player behavior still need staging verification.
+Many products include da/en, but hardcoded/server-specific strings can remain. Pausemenu/Smoking do not have a generic Locale switch. Translate source/config text where needed.
+
+## Why do config changes not reset taxes/stock/ownership?
+
+Some config values seed SQL or are fallbacks. Existing saved rows can take precedence; do not delete them just to change a default.
+
+## Is this published on GitBook already?
+
+This deliverable is the GitBook-ready Markdown/navigation package. Publishing requires importing or connecting it to your GitBook space. No online space was created or modified in this task.

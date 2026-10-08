@@ -1,39 +1,29 @@
----
-description: "Dependencies and upgrade steps for Advanced Car Radio 1.2.0."
----
-
-# Advanced Car Radio — Installation
-
-{% hint style="info" %}
-Use the bridge release **1.2.0** with **mm_bridge 0.3.0+**. External providers are not included.
-{% endhint %}
-
-## 1. Prepare the resource
-
-Back up the current resource and database. Keep the folder named `advanced_car_radio`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
-
-## 2. Start dependencies
-
-Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+# Installation
 
 ```cfg
-ensure mm_bridge
-ensure ox_lib
 ensure oxmysql
+ensure ox_lib
+ensure qbx_core
 ensure xsound
 ensure advanced_car_radio
 ```
 
-This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
+Supply a compatible resource named xsound with the expected exports. Actual media playback depends on xSound/CEF; accepted URLs/metadata do not guarantee audio. Playlists use citizenid, vehicle libraries use normalized plates. Changing/reused plates need a stable vehicle-identity adapter. No custom item is required.
 
-## 3. Prepare data and items
+## Database
 
-- `sql/install.sql`
+Automatic creation exists. Optional manual schema: `sql/install.sql`.
 
-Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
+| Resource-owned table                 |
+| ------------------------------------ |
+| `advanced_car_radio_playlist_tracks` |
+| `advanced_car_radio_playlists`       |
+| `advanced_car_radio_settings`        |
+| `advanced_car_radio_vehicle_state`   |
+| `advanced_car_radio_vehicle_tracks`  |
 
-## 4. Configure and verify
+## Staff ACE
 
-Requires xSound for audio, oxmysql for persistence and ox_lib. No target/inventory/phone adapter is required. Provider changes do not move saved radio ownership automatically.
+Normal player use needs no additional product ACE; see restricted developer setup where relevant.
 
-Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.
+Source: manifest/config and loaded server database/bridge code.

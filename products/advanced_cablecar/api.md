@@ -1,13 +1,12 @@
-# Advanced Cablecar — Exports and integrations
+# Exports and integrations
 
-{% hint style="info" %}
-Server exports are for trusted resources. Enforce caller authorization and source/amount checks. Client menu actions are not proof of payment or permission. Internal events are not a public adapter API.
-{% endhint %}
+Server export HasCableCarTicket(source) clears expired ticket data and reports valid access. Tickets are temporary; free job/fare-disabled handling is part of the internal check.
 
-Optional targets still call ox_target directly. Ticket-machine proximity interactions work without a target provider. Config.Framework='standalone' explicitly skips fares; legacy 'qbox' selects paid bridge behavior. Framework selection in mm_bridge does not override this resource fare setting.
+```lua
+-- SERVER
+local canUseTicket = exports.advanced_cablecar:HasCableCarTicket(playerServerId)
+```
 
-| Export | Side | Arguments | Implementation |
-| --- | --- | --- | --- |
-| `HasCableCarTicket` | server | `source` | `server/main.lua` |
+Optional ox\_target is Config.Target-controlled. The server syncs timetable/movement snapshots; clients interpolate cabins and run local cinematics. Do not replace sync snapshots with per-client independent timers. No QB/ESX money adapters are provided by the standalone option.
 
-Dynamic exports are described in their specialized integration guides; this literal index is not an exhaustive list of dynamically generated names. Consult [bridge integration](bridge.md) for return contracts and provider limitations, and [internal registrations](events.md) for module routing.
+Source: export declarations and loaded framework/inventory/billing bridges in the supplied product.

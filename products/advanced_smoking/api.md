@@ -1,13 +1,9 @@
-# Advanced Smoking — Exports and integrations
+# Exports and integrations
 
-{% hint style="info" %}
-Server exports are for trusted resources. Enforce caller authorization and source/amount checks. Client menu actions are not proof of payment or permission. Internal events are not a public adapter API.
-{% endhint %}
+Client export useItem(data, slot) is an inventory entrypoint. It extracts selected name/slot, requests advanced\_smoking:action and returns whether the existing use flow accepted it. Configure inventory client.export = 'advanced\_smoking.useItem' according to your TGIANN definition format; do not replace the server's slot validation with client-trusted metadata.
 
-Full item use requires individual slots and persistent metadata. Plain ESX inventory and standalone without a suitable inventory cannot run the full system. QB inventory supports ordinary items; containers remain locked until a safe local stash adapter is configured. Shop credits marked processing/review require reconciliation.
+Replicated state key nrp:smoking describes the current visible session. Product data lives in shared/catalog.lua and info.smoking preserves UID/remaining/battery/liquid/condition/water/loan/serial information. Stashes use nrp\_smoking\_. Native TGIANN open/swap hooks protect ownership and allowed contents.
 
-| Export | Side | Arguments | Implementation |
-| --- | --- | --- | --- |
-| `useItem` | client | `data,slot` | `client/main.lua` |
+Optional audit calls are guarded when nrp\_core\_systems is absent; basic Smoking is not a hard NRP dependency. Database and inventory writes are separate; recovery journals are not one universal ACID transaction across both systems. There is no generic server export to grant arbitrary smoke bonuses.
 
-Dynamic exports are described in their specialized integration guides; this literal index is not an exhaustive list of dynamically generated names. Consult [bridge integration](bridge.md) for return contracts and provider limitations, and [internal registrations](events.md) for module routing.
+Source: export declarations and loaded framework/inventory/billing bridges in the supplied product.

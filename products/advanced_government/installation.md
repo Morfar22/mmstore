@@ -1,38 +1,58 @@
----
-description: "Dependencies and upgrade steps for Advanced Government 2.1.0."
----
-
-# Advanced Government — Installation
-
-{% hint style="info" %}
-Use the bridge release **2.1.0** with **mm_bridge 0.3.0+**. External providers are not included.
-{% endhint %}
-
-## 1. Prepare the resource
-
-Back up the current resource and database. Keep the folder named `advanced_government`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
-
-## 2. Start dependencies
-
-Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+# Installation
 
 ```cfg
-ensure mm_bridge
-ensure ox_lib
 ensure oxmysql
+ensure ox_lib
+ensure qbx_core
+ensure ox_target
+ensure nrp_core_systems
 ensure advanced_government
 ```
 
-This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
+The loaded `server/nrp_bridge.lua` directly updates `vi_accounts`, logs to `vi_transactions`, reads `nrp_businesses` and emits `nrp:audit:log`. The private-business path also calls the nrp\_businesses resource. Neither NRP system is supplied. Changing Banking.resource to Renewed-Banking alone does not replace this bridge.
 
-## 3. Prepare data and items
+1. Supply compatible nrp\_core\_systems banking/schema or develop a replacement adapter.
+2. Fresh installs import `install/install.sql`. Compatible v1 upgrades import `install/migrate_v1_to_v2.sql`; that migration does not replace all older base schema.
+3. Permanently merge `install/qbx_job.lua` into QBox jobs. Mayor is grade 4.
+4. Grant government.admin and map PublicAccounts/BusinessAccounts correctly.
+5. Add a single call to WithholdIncomeTax in QBox payroll after successful gross bank pay if you want wage tax. That QBox modification is not in this archive.
+6. Restart the server after framework job/wage changes.
 
-No separate SQL file is included; see the resource database initialization where applicable.
+The README's older Renewed-Banking example is stale for this build. Existing v1 treasury transactions need the reference column/unique key used by the current adapter.
 
-Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
+## Database
 
-## 4. Configure and verify
+Import `install/install.sql` before use.
 
-Default native job synchronization is QBox only; QBCore/ESX/standalone use SQL political roles unless custom job sync is configured. Default society settlement still needs NRP resources/schema or an atomic custom society adapter. Payroll tax is an opt-in export, not an automatically installed payroll hook.
+| Resource-owned table               |
+| ---------------------------------- |
+| `government_audit`                 |
+| `government_budgets`               |
+| `government_cabinet`               |
+| `government_campaign_ads`          |
+| `government_campaign_donations`    |
+| `government_candidates`            |
+| `government_contract_bids`         |
+| `government_contracts`             |
+| `government_elections`             |
+| `government_grants`                |
+| `government_law_votes`             |
+| `government_laws`                  |
+| `government_office`                |
+| `government_parties`               |
+| `government_party_members`         |
+| `government_referendum_votes`      |
+| `government_referendums`           |
+| `government_settings`              |
+| `government_taxes`                 |
+| `government_treasury`              |
+| `government_treasury_transactions` |
+| `government_votes`                 |
 
-Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.
+## Staff ACE
+
+```cfg
+add_ace group.admin government.admin allow
+```
+
+Source: manifest/config and loaded server database/bridge code.
