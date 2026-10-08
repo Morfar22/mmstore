@@ -1,22 +1,37 @@
+---
+description: "Dependencies and upgrade steps for Advanced Pausemenu 5.2.0."
+---
+
 # Advanced Pausemenu — Installation
+
+{% hint style="info" %}
+Use the bridge release **5.2.0** with **mm_bridge 0.3.0+**. External providers are not included.
+{% endhint %}
+
+## 1. Prepare the resource
+
+Back up the current resource and database. Keep the folder named `advanced_pausemenu`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
+
+## 2. Start dependencies
+
+Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
 
 ```cfg
 ensure ox_lib
-ensure qbx_core
+ensure mm_bridge
 ensure advanced_pausemenu
 ```
 
-Replace NORDISK RP branding, FAQ, updates, commands and waypoints in config. Inventory bridge calls `openInventory('player')`, GetPlayerWeight and GetPlayerMaxWeight. Changing its resource string to TGIANN does not ensure those exports exist. Implement a compatible adapter or working fallbackCommand; command fallback does not supply weights. Run one ESC replacement. No SQL/items are required.
+This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
 
-## Database
+## 3. Prepare data and items
 
-No SQL tables.
+No separate SQL file is included; see the resource database initialization where applicable.
 
-| Resource-owned table |
-| --- |
+Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
 
-## Staff ACE
+## 4. Configure and verify
 
-Normal player use needs no additional product ACE; see restricted developer setup where relevant.
+The bridge reads inventory items but has no UI-open or weight API. Configure Inventory.command or a confirmed client Inventory.open hook; getWeight is a local hook. Unsupported balances show as unavailable. Service counts use duty but are not currently rendered by the UI.
 
-Source: manifest/config and loaded server database/bridge code.
+Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.

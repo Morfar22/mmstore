@@ -1,36 +1,38 @@
+---
+description: "Current configuration excerpts for Advanced Vet DLC."
+---
+
 # Advanced Vet DLC — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **15.11.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `config.lua`, line 3.
+Source file: `config.lua`.
 
 ```lua
 Config.Locale = 'da'
 ```
 
-
 ## Config.LocaleFallback
 
-Controls locale fallback. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 4.
+Source file: `config.lua`.
 
 ```lua
 Config.LocaleFallback = 'en'
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `config.lua`, line 6.
+Source file: `config.lua`.
 
 ```lua
 Config.Debug = false
@@ -38,23 +40,17 @@ Config.Debug = false
 -- DeveloperMode exposes diagnostic/test commands only. Keep false in production.
 ```
 
-
 ## Config.DeveloperMode
 
-Exposes developer/test tools; not normal player permissions.
-
-Source: `config.lua`, line 9.
+Source file: `config.lua`.
 
 ```lua
 Config.DeveloperMode = false
 ```
 
-
 ## Config.Database
 
-Persistence and automatic schema initialization controls.
-
-Source: `config.lua`, line 11.
+Source file: `config.lua`.
 
 ```lua
 Config.Database = {
@@ -63,12 +59,9 @@ Config.Database = {
 }
 ```
 
-
 ## Config.Access
 
-Veterinarian job and ACE access.
-
-Source: `config.lua`, line 16.
+Source file: `config.lua`.
 
 ```lua
 Config.Access = {
@@ -85,12 +78,9 @@ Config.Access = {
 }
 ```
 
-
 ## Config.Commands
 
-Player/staff command names; actual registrations are in the commands guide/reference.
-
-Source: `config.lua`, line 29.
+Source file: `config.lua`.
 
 ```lua
 Config.Commands = {
@@ -100,12 +90,9 @@ Config.Commands = {
 }
 ```
 
-
 ## Config.Keybinds
 
-Default mappings; existing client bindings can survive config changes.
-
-Source: `config.lua`, line 35.
+Source file: `config.lua`.
 
 ```lua
 Config.Keybinds = {
@@ -116,12 +103,9 @@ Config.Keybinds = {
 }
 ```
 
-
 ## Config.SetupEditor
 
-Live setup permissions/editor movement; Vet editorOnly requires saved DB positions.
-
-Source: `config.lua`, line 43.
+Source file: `config.lua`.
 
 ```lua
 Config.SetupEditor = {
@@ -174,29 +158,23 @@ Config.SetupEditor = {
 }
 ```
 
-
 ## Config.Target
 
-Optional target provider; proximity/native alternatives vary by resource.
-
-Source: `config.lua`, line 92.
+Source file: `config.lua`.
 
 ```lua
 Config.Target = {
     enabled = true,
-    provider = 'auto', -- auto / ox_target / markers
+    provider = 'bridge', -- bridge / markers; target provider is selected in mm_bridge
 }
 
 -- Veterinary clinic points.
 -- These include the current custom MLO positions and must be preserved when updating.
 ```
 
-
 ## Config.Locations
 
-Controls locations. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 99.
+Source file: `config.lua`.
 
 ```lua
 Config.Locations = {
@@ -268,12 +246,9 @@ Config.Locations = {
 }
 ```
 
-
 ## Config.DeathIntegration
 
-Sky/native revive and authoritative injury cleanup.
-
-Source: `config.lua`, line 170.
+Source file: `config.lua`.
 
 ```lua
 Config.DeathIntegration = {
@@ -307,12 +282,9 @@ Config.DeathIntegration = {
 }
 ```
 
-
 ## Config.K9Training
 
-Controls k9 training. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 200.
+Source file: `config.lua`.
 
 ```lua
 Config.K9Training = {
@@ -339,17 +311,14 @@ Config.K9Training = {
 }
 ```
 
-
 ## Config.Inventory
 
-Actual inventory adapter/requirements; string/provider alone does not implement a new adapter.
-
-Source: `config.lua`, line 223.
+Source file: `config.lua`.
 
 ```lua
 Config.Inventory = {
     enabled = true,
-    provider = 'auto', -- auto / ox_inventory / tgiann-inventory / framework / none
+    provider = 'bridge', -- bridge / none; inventory provider is selected in mm_bridge
     prescriptionAmount = 1,
 
     -- Every issued pharmacy prescription creates TWO inventory items:
@@ -366,12 +335,9 @@ Config.Inventory = {
 -- a table, but updates should not replace these locations with demo values.
 ```
 
-
 ## Config.PatientTables
 
-Physical placement/pose/release; supplied legacy coords ignored in editor-only runtime.
-
-Source: `config.lua`, line 240.
+Source file: `config.lua`.
 
 ```lua
 Config.PatientTables = {
@@ -526,12 +492,9 @@ Config.PatientTables = {
 }
 ```
 
-
 ## Config.Triage
 
-Controls triage. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 392.
+Source file: `config.lua`.
 
 ```lua
 Config.Triage = {
@@ -546,12 +509,9 @@ Config.Triage = {
 }
 ```
 
-
 ## Config.PatientConsent
 
-Which procedures ask player consent and timeout/emergency bypass.
-
-Source: `config.lua`, line 403.
+Source file: `config.lua`.
 
 ```lua
 Config.PatientConsent = {
@@ -580,12 +540,9 @@ Config.PatientConsent = {
 }
 ```
 
-
 ## Config.XRay
 
-Controls x ray. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 428.
+Source file: `config.lua`.
 
 ```lua
 Config.XRay = {
@@ -602,12 +559,9 @@ Config.XRay = {
 }
 ```
 
-
 ## Config.Surgery
 
-Controls surgery. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 441.
+Source file: `config.lua`.
 
 ```lua
 Config.Surgery = {
@@ -650,12 +604,9 @@ Config.Surgery = {
 }
 ```
 
-
 ## Config.Kennels
 
-Controls kennels. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 480.
+Source file: `config.lua`.
 
 ```lua
 Config.Kennels = {
@@ -703,12 +654,9 @@ Config.Kennels = {
 }
 ```
 
-
 ## Config.ChipScanner
 
-Controls chip scanner. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 524.
+Source file: `config.lua`.
 
 ```lua
 Config.ChipScanner = {
@@ -717,12 +665,9 @@ Config.ChipScanner = {
 }
 ```
 
-
 ## Config.Vaccinations
 
-Controls vaccinations. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 529.
+Source file: `config.lua`.
 
 ```lua
 Config.Vaccinations = {
@@ -746,16 +691,13 @@ Config.Vaccinations = {
 }
 ```
 
-
 ## Config.Billing
 
-Invoice provider/account/limit. Shipped Vet provider is NRP.
-
-Source: `config.lua`, line 549.
+Source file: `config.lua`.
 
 ```lua
 Config.Billing = {
-    provider = 'nrp',
+    provider = 'bridge',
     nrpAccount = 'vet', -- Account for ACE-authorized staff without a veterinary job.
     enabled = true,
     account = 'bank',
@@ -764,12 +706,9 @@ Config.Billing = {
 }
 ```
 
-
 ## Config.Appointments
 
-Controls appointments. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 558.
+Source file: `config.lua`.
 
 ```lua
 Config.Appointments = {
@@ -778,12 +717,9 @@ Config.Appointments = {
 }
 ```
 
-
 ## Config.MedicineUse
 
-Controls medicine use. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 563.
+Source file: `config.lua`.
 
 ```lua
 Config.MedicineUse = {
@@ -805,12 +741,9 @@ Config.MedicineUse = {
 }
 ```
 
-
 ## Config.Pharmacy
 
-Catalog/stock/prescription workflow; documented gameplay effects are separate from source RP label text.
-
-Source: `config.lua`, line 581.
+Source file: `config.lua`.
 
 ```lua
 Config.Pharmacy = {
@@ -828,6 +761,7 @@ Config.Pharmacy = {
             itemName = 'vet_quietpaws',
             category = 'Sedative',
             productName = 'QuietPaws™',
+            form = 'Yellow round scored tablets / clear-pale yellow injectable',
             gameplayInfo = 'Heavy sedation for 3 min: slower movement, no sprint/jump/attack, strong sedated screen effect.',
             kind = 'medicine',
             effects = {
@@ -853,6 +787,7 @@ Config.Pharmacy = {
             itemName = 'vet_gentleease',
             category = 'Strong Painkiller',
             productName = 'GentleEase™',
+            form = 'White to off-white tablets or capsules',
             gameplayInfo = 'Strong pain-relief status for 4 min with mild drowsy visual and movement effect; does not heal wounds.',
             kind = 'medicine',
             effects = {
@@ -876,6 +811,7 @@ Config.Pharmacy = {
             itemName = 'vet_happyjoints',
             category = 'Mild Painkiller (NSAID)',
             productName = 'HappyJoints™',
+            form = 'Brown scored chewable tablets / oral suspension',
             gameplayInfo = 'Joint-support status for 10 min; no narcotic screen effect.',
             kind = 'medicine',
             effects = {
@@ -888,6 +824,7 @@ Config.Pharmacy = {
             itemName = 'vet_bellybloom',
             category = 'Stomach / GI Support',
             productName = 'BellyBloom™',
+            form = 'White capsules',
             gameplayInfo = 'GI/stomach-support status for 10 min; does not add hunger.',
             kind = 'medicine',
             effects = {
@@ -900,6 +837,7 @@ Config.Pharmacy = {
             itemName = 'vet_peacefulpet',
             category = 'Anxiety / Calming',
             productName = 'PeacefulPet™',
+            form = 'White to light tan scored tablets',
             gameplayInfo = 'Calming for 4 min: mild drowsy screen/movement effect and K9 attack actions are blocked.',
             kind = 'medicine',
             effects = {
@@ -923,6 +861,7 @@ Config.Pharmacy = {
             itemName = 'vet_goldenpaws_daily',
             category = 'Multivitamin',
             productName = 'GoldenPaws Daily™',
+            form = 'Brown palatable chewable tablets',
             gameplayInfo = '15 min vitality buff: +25% max HP; if no on-duty Vet is online, also restores 25 percentage points of HP.',
             kind = 'medicine',
             effects = {
@@ -942,6 +881,7 @@ Config.Pharmacy = {
             itemName = 'vet_meadowbowl',
             category = 'Daily Food',
             productName = 'MeadowBowl™',
+            form = 'Matte kraft bag / soft-touch pouch',
             gameplayInfo = 'Full daily meal: restores 45 hunger.',
             kind = 'nutrition',
             effects = {
@@ -953,6 +893,7 @@ Config.Pharmacy = {
             itemName = 'vet_softharvest',
             category = 'Sensitive / Recovery Food',
             productName = 'SoftHarvest™',
+            form = 'Small batch-style pouch or tin',
             gameplayInfo = 'Recovery meal: restores 35 hunger and grants recovery-nutrition status for 5 min.',
             kind = 'nutrition',
             effects = {
@@ -966,6 +907,7 @@ Config.Pharmacy = {
             itemName = 'vet_sprinkle_of_sunshine',
             category = 'Food Topper',
             productName = 'Sprinkle of Sunshine™',
+            form = 'Glass jar / sprinkle tin',
             gameplayInfo = 'Food topper: restores 5 hunger and grants appetite-support status for 5 min.',
             kind = 'nutrition',
             effects = {
@@ -979,6 +921,7 @@ Config.Pharmacy = {
             itemName = 'vet_clearspring',
             category = 'Hydration / Water Additive',
             productName = 'ClearSpring™',
+            form = 'Dropper bottle with soft blue botanical styling',
             gameplayInfo = 'Hydration support: restores 25 thirst.',
             kind = 'hydration',
             effects = {
@@ -990,6 +933,7 @@ Config.Pharmacy = {
             itemName = 'vet_pawpure',
             category = 'Electrolyte Water Boost',
             productName = 'PawPure™',
+            form = 'Sachets / liquid concentrate',
             gameplayInfo = 'Electrolyte hydration: restores 40 thirst and grants electrolyte-support status for 5 min.',
             kind = 'hydration',
             effects = {
@@ -1003,6 +947,7 @@ Config.Pharmacy = {
             itemName = 'vet_stillbrook',
             category = 'Daily Water',
             productName = 'StillBrook™',
+            form = 'Glass bottle / carton',
             gameplayInfo = 'Daily water: restores 30 thirst.',
             kind = 'hydration',
             effects = {
@@ -1013,12 +958,9 @@ Config.Pharmacy = {
 }
 ```
 
-
 ## Config.Interaction
 
-Controls interaction. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 832.
+Source file: `config.lua`.
 
 ```lua
 Config.Interaction = {
@@ -1028,12 +970,9 @@ Config.Interaction = {
 }
 ```
 
-
 ## Config.AdvancedK9
 
-Optional resource name/state/passport/care integration.
-
-Source: `config.lua`, line 838.
+Source file: `config.lua`.
 
 ```lua
 Config.AdvancedK9 = {
@@ -1048,12 +987,9 @@ Config.AdvancedK9 = {
 }
 ```
 
-
 ## Config.AnimalModels
 
-Controls animal models. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 849.
+Source file: `config.lua`.
 
 ```lua
 Config.AnimalModels = {
@@ -1078,12 +1014,9 @@ Config.AnimalModels = {
 -- Purely gameplay values. These are not real-world veterinary protocols.
 ```
 
-
 ## Config.ProcedurePresentation
 
-Internal/optional ox_lib progress and staff animation settings.
-
-Source: `config.lua`, line 869.
+Source file: `config.lua`.
 
 ```lua
 Config.ProcedurePresentation = {
@@ -1246,12 +1179,9 @@ Config.ProcedurePresentation = {
 }
 ```
 
-
 ## Config.Treatments
 
-Controls treatments. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 1028.
+Source file: `config.lua`.
 
 ```lua
 Config.Treatments = {
@@ -1322,4 +1252,45 @@ Config.Treatments = {
         revive = true,
     },
 }
+
+-- Select framework, inventory, target and billing centrally in mm_bridge/config.lua.
+-- Preserve existing license-based Vet records. Character mode needs a manual DB migration.
 ```
+
+## Config.BridgeIdentity
+
+Source file: `config.lua`.
+
+```lua
+Config.BridgeIdentity = 'legacy_license'
+-- Optional server function(src, hunger, thirst) -> true after applying needs.
+```
+
+## Config.BridgeNeeds
+
+Source file: `config.lua`.
+
+```lua
+Config.BridgeNeeds = nil
+-- Optional server function(clinicId) -> invoice rows for custom clinic-wide ledgers.
+```
+
+## Config.Billing.bridgeRows
+
+Source file: `config.lua`.
+
+```lua
+Config.Billing.bridgeRows = nil
+
+-- Optional society override, e.g. society_vet for esx_billing.
+```
+
+## Config.Billing.bridgeSociety
+
+Source file: `config.lua`.
+
+```lua
+Config.Billing.bridgeSociety = nil
+```
+
+RP pharmacy label/dose prose is omitted here. Use [medicine](medicine.md) for gameplay effects and the shipped configuration for item metadata.

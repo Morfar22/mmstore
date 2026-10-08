@@ -1,41 +1,38 @@
+---
+description: "Dependencies and upgrade steps for Advanced K9 95.1.0."
+---
+
 # Advanced K9 — Installation
+
+{% hint style="info" %}
+Use the bridge release **95.1.0** with **mm_bridge 0.3.0+**. External providers are not included.
+{% endhint %}
+
+## 1. Prepare the resource
+
+Back up the current resource and database. Keep the folder named `advanced_k9`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
+
+## 2. Start dependencies
+
+Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
 
 ```cfg
 ensure oxmysql
+ensure ox_lib
+ensure mm_bridge
 ensure advanced_k9
 ```
 
-The hard dependency is oxmysql. `client/ui_bridge.lua` supplies an internal `lib` UI bridge; the manifest does not load ox_lib init. Start your intended framework and optional target/inventory/phone providers first.
+This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
 
-1. Configure AuthorityJobs and the staff ACE.
-2. Approve both service handler and dog through `/k9admin`; job access alone is insufficient.
-3. Review `CivilK9.publicAccess = true`: the civilian public path does not require service approvals.
-4. Save actual vehicle cage geometry using `/k9setup` and check it with two players.
-5. If using InteractSound, provide the matching `.ogg` bark/whine files. They are absent from the archive.
+## 3. Prepare data and items
 
-Keep the actual folder `advanced_k9`; the manifest's name `advanced_k9_handler` is metadata, while integrations reference the resource folder.
+- `sql/advanced_k9.sql`
 
-## Database
+Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
 
-Automatic creation exists. Optional manual schema: `sql/advanced_k9.sql`.
+## 4. Configure and verify
 
-| Resource-owned table |
-| --- |
-| `advanced_k9_adoptions` |
-| `advanced_k9_approvals` |
-| `advanced_k9_passports` |
-| `advanced_k9_preferences` |
-| `advanced_k9_progress` |
-| `advanced_k9_stationary_kennels` |
-| `advanced_k9_vehicle_anchors` |
-| `advanced_k9_vehicle_cameras` |
-| `advanced_k9_vehicle_slots` |
+Standalone service authority needs ACE or explicit opt-in; civil play remains available. Needs and optional legacy phone adapters remain local extensions. The existing K9 UI and Vet exports are retained. Database keys default to legacy licenses; character mode requires a manual migration.
 
-## Staff ACE
-
-```cfg
-add_ace group.admin advancedk9.admin allow
-```
-
-
-Source: manifest/config and loaded server database/bridge code.
+Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.

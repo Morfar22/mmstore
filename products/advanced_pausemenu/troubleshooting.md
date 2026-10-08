@@ -1,9 +1,21 @@
 # Advanced Pausemenu — Troubleshooting
 
+{% hint style="warning" %}
+The bridge reads inventory items but has no UI-open or weight API. Configure Inventory.command or a confirmed client Inventory.open hook; getWeight is a local hook. Unsupported balances show as unavailable. Service counts use duty but are not currently rendered by the UI.
+{% endhint %}
+
+## Bridge diagnostics
+
+Run `mmbridge_status` in the server console. Confirm the selected provider is ready; an explicit missing provider never silently falls back. If auto detects multiple candidates, choose one explicitly. Restart dependent resources after bridge/provider restarts.
+
+For failed credits, item mutations or billing operations, retain the exact error and reconcile provider records before retrying. Do not assume an error proves that no external mutation occurred.
+
+See [support](../../getting-started/support.md) and [bridge troubleshooting](../../bridge/troubleshooting.md).
+
+
 | Symptom | Check |
 | --- | --- |
 | Two ESC menus | Stop other replacement; check ReplaceDefaultPause. |
-| Inventory fails | Generic ox-style exports are used; implement actual TGIANN adapter or command fallback. |
 | Settings loading | Shipped frontend selects FE_MENU_VERSION_MP_PAUSE page 6; gather F8/native evidence, no later fix assumed. |
 | Wrong text/services | Change config and hardcoded Danish UI; match exact job names. |
 

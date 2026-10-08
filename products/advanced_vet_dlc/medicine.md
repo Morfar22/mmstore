@@ -17,7 +17,7 @@ Use install/ox_inventory_items.lua, install/tgiann_inventory_items.lua or instal
 | vet_pawpure | usePawPure | 300 s status | +40 thirst / electrolyte status |
 | vet_stillbrook | useStillBrook | Instant need change | +30 thirst |
 
-Dedicated export prefix is advanced_vet_dlc., e.g. advanced_vet_dlc.useQuietPaws. ox_inventory generic callback is useVetMedicine; use the matching supplied item table rather than swapping callback identities across inventories. Dedicated TGIANN exports let the resource identify a product even if the callback omits its name.
+Dedicated export prefix is advanced_vet_dlc., e.g. advanced_vet_dlc.useQuietPaws. ox_inventory generic callback is useVetMedicine; use the matching supplied item table rather than swapping callback identities across inventories. Dedicated TGIANN exports let the resource identify a product even if the callback omits its name; an authoritative inventory slot is now required.
 
 Prescription issuance requires patient selection by default and gives product plus prescription document. Metadata records patient, medicine/product, issuing staff and RP label/effect information. Patient-match check is enabled for use. A human uses the item on a nearby player dog (3 m); a dog uses it on itself.
 
@@ -26,3 +26,8 @@ GoldenPaws vitality buff applies whether or not a vet is available. Only the add
 All values on this page are FiveM gameplay settings. Real-world drug labels/dose strings in the source catalog are not instructions for treating an animal and are intentionally not reproduced as a dosing guide.
 
 Validate item consumption once, metadata resolution, target mismatch rejection, effect expiry and max-HP restoration on your actual inventory/client. These interactions were not live-tested here.
+
+
+## Bridge requirements
+
+Prescription items need slot/metadata support. Plain ESX inventory cannot preserve prescription metadata. Bridge billing supports own invoices; NRP retains clinic SQL lists, other clinic-wide lists need a hook. Needs and inventory item-definition/tooltip introspection remain local extensions. Patient IDs default to legacy licenses. See [bridge integration](bridge.md).

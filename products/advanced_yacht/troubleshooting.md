@@ -1,5 +1,18 @@
 # Advanced Yacht — Troubleshooting
 
+{% hint style="warning" %}
+Items and money use the bridge. Stashes are a local secured extension: ox_inventory and TGIANN are provided; QB/custom stash support requires an adapter with real open/transfer controls. Framework changes do not migrate yacht ownership or stash contents.
+{% endhint %}
+
+## Bridge diagnostics
+
+Run `mmbridge_status` in the server console. Confirm the selected provider is ready; an explicit missing provider never silently falls back. If auto detects multiple candidates, choose one explicitly. Restart dependent resources after bridge/provider restarts.
+
+For failed credits, item mutations or billing operations, retain the exact error and reconcile provider records before retrying. Do not assume an error proves that no external mutation occurred.
+
+See [support](../../getting-started/support.md) and [bridge troubleshooting](../../bridge/troubleshooting.md).
+
+
 | Symptom | Check |
 | --- | --- |
 | Yacht invisible | Check Rockstar IPL streaming and conflicting yacht resources. |

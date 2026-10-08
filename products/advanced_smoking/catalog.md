@@ -48,7 +48,7 @@ The source defines these exact 41 keys. Prices are catalog defaults (— means n
 
 ## Definition integration checklist
 
-1. Define all names in your TGIANN item registry, including pack child cigarettes and smk_roach.
+1. Define all names in your selected inventory item registry, including pack child cigarettes and smk_roach.
 2. Match kind/weight/label to catalog; supply corresponding icons (none are shipped).
 3. Hook usable items to client export advanced_smoking.useItem with valid name/slot payload.
 4. Keep independently tracked product metadata in info.smoking and do not stack unique UID/loan/serial states together.
@@ -56,4 +56,9 @@ The source defines these exact 41 keys. Prices are catalog defaults (— means n
 6. Confirm carry, add/remove, metadata update and native stash hooks on the installed inventory version.
 7. Test packs, reusable/disposable products, accessories, loans/returns and containers separately.
 
-This is a documentation contract, not a generated drop-in item adapter. The inventory's exact schema/consume callback must match your installed TGIANN version. Adding a new catalog entry also needs its definition/image and gameplay kind support.
+Included ox/QB templates are listed in the install reference. Validate the consume contract before use. The inventory's exact schema/consume callback must match your installed TGIANN version. Adding a new catalog entry also needs its definition/image and gameplay kind support.
+
+
+## Bridge requirements
+
+Full item use requires individual slots and persistent metadata. Plain ESX inventory and standalone without a suitable inventory cannot run the full system. QB inventory supports ordinary items; containers remain locked until a safe local stash adapter is configured. Shop credits marked processing/review require reconciliation. See [bridge integration](bridge.md).

@@ -1,5 +1,18 @@
 # Advanced Smoking — Troubleshooting
 
+{% hint style="warning" %}
+Full item use requires individual slots and persistent metadata. Plain ESX inventory and standalone without a suitable inventory cannot run the full system. QB inventory supports ordinary items; containers remain locked until a safe local stash adapter is configured. Shop credits marked processing/review require reconciliation.
+{% endhint %}
+
+## Bridge diagnostics
+
+Run `mmbridge_status` in the server console. Confirm the selected provider is ready; an explicit missing provider never silently falls back. If auto detects multiple candidates, choose one explicitly. Restart dependent resources after bridge/provider restarts.
+
+For failed credits, item mutations or billing operations, retain the exact error and reconcile provider records before retrying. Do not assume an error proves that no external mutation occurred.
+
+See [support](../../getting-started/support.md) and [bridge troubleshooting](../../bridge/troubleshooting.md).
+
+
 | Symptom | Check |
 | --- | --- |
 | Shop/items fail | Inventory definitions/icons are absent; install all catalog keys and compatible use export. |

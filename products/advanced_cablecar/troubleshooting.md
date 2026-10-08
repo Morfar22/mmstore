@@ -1,5 +1,18 @@
 # Advanced Cablecar — Troubleshooting
 
+{% hint style="warning" %}
+Optional targets still call ox_target directly. Ticket-machine proximity interactions work without a target provider. Config.Framework='standalone' explicitly skips fares; legacy 'qbox' selects paid bridge behavior. Framework selection in mm_bridge does not override this resource fare setting.
+{% endhint %}
+
+## Bridge diagnostics
+
+Run `mmbridge_status` in the server console. Confirm the selected provider is ready; an explicit missing provider never silently falls back. If auto detects multiple candidates, choose one explicitly. Restart dependent resources after bridge/provider restarts.
+
+For failed credits, item mutations or billing operations, retain the exact error and reconcile provider records before retrying. Do not assume an error proves that no external mutation occurred.
+
+See [support](../../getting-started/support.md) and [bridge troubleshooting](../../bridge/troubleshooting.md).
+
+
 | Symptom | Check |
 | --- | --- |
 | No money deduction | Standalone intentionally free; start QBox for qbox fares. |

@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: MM - Store
+  title: MM – Store Docs
   structure:
     - type: space
       key: mm-store-docs

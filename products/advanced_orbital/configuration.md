@@ -1,124 +1,105 @@
+---
+description: "Current configuration excerpts for Advanced Orbital."
+---
+
 # Advanced Orbital — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.3.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `shared/config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `shared/config.lua`, line 3.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Locale = 'da'
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `shared/config.lua`, line 4.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Debug = false
-```
 
+-- Framework and target providers are selected in mm_bridge/config.lua.
+-- Standalone: use ACE/public access and set EVERY terminal price to 0.
+```
 
 ## Config.MoneyAccount
 
-Controls money account. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 6.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MoneyAccount = 'bank'
 ```
 
-
 ## Config.RequireDuty
 
-Controls require duty. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 7.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.RequireDuty = false
 ```
 
-
 ## Config.DefaultPrice
 
-Controls default price. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 8.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DefaultPrice = 250000
 ```
 
-
 ## Config.DailyPlayerLimit
 
-Controls daily player limit. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 9.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DailyPlayerLimit = 3
 ```
 
-
 ## Config.DailyServerLimit
 
-Controls daily server limit. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 10.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DailyServerLimit = 15
 ```
 
-
 ## Config.CooldownSeconds
 
-Controls cooldown seconds. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 11.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.CooldownSeconds = 180
 ```
 
-
 ## Config.CountdownSeconds
 
-Controls countdown seconds. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 12.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.CountdownSeconds = 3
 ```
 
-
 ## Config.InstantStrike
 
-Controls instant strike. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 13.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.InstantStrike = false
 ```
 
-
 ## Config.Camera
 
-Orbital movement/FOV/lock/search distances.
-
-Source: `shared/config.lua`, line 15.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Camera = {
@@ -137,12 +118,9 @@ Config.Camera = {
 }
 ```
 
-
 ## Config.Strike
 
-Blast/player/vehicle/render radii; actual GTA explosion code uses tag 59.
-
-Source: `shared/config.lua`, line 30.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Strike = {
@@ -158,12 +136,9 @@ Config.Strike = {
 }
 ```
 
-
 ## Config.Audio
 
-Controls audio. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 42.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Audio = {
@@ -177,12 +152,9 @@ Config.Audio = {
 }
 ```
 
-
 ## Config.Controls
 
-Native GTA input IDs for Orbital, not arbitrary keyboard strings.
-
-Source: `shared/config.lua`, line 52.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Controls = {
@@ -200,12 +172,9 @@ Config.Controls = {
 }
 ```
 
-
 ## Config.Discord
 
-Optional webhook settings; keep private, disabled by default.
-
-Source: `shared/config.lua`, line 66.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Discord = {
@@ -214,27 +183,21 @@ Config.Discord = {
     username = 'Orbital Control',
 }
 
--- ACE is checked with IsPlayerAceAllowed(source, ace).
+-- ACE is checked server-side through MMBridge.HasAce.
 -- Example: add_ace group.admin advanced_orbital.admin allow
 ```
 
-
 ## Config.AdminAce
 
-Controls admin ace. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 74.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.AdminAce = 'advanced_orbital.admin'
 ```
 
-
 ## Config.Terminals
 
-Orbital IDs, actual points, job grade/ACE/public access, prices and modes.
-
-Source: `shared/config.lua`, line 76.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Terminals = {
@@ -246,7 +209,7 @@ Config.Terminals = {
         price = 250000,
         marker = true,
         access = {
-            jobs = { police = 5 }, -- job = minimum grade
+            jobs = { police = 5 }, -- active job = minimum grade
             aces = { 'advanced_orbital.use' },
             public = false,
         },
@@ -261,12 +224,9 @@ Config.Terminals = {
 -- Areas where strikes are blocked. Surveillance remains available.
 ```
 
-
 ## Config.SafeZones
 
-Orbital impact blocked zones; verify real server map points.
-
-Source: `shared/config.lua`, line 98.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.SafeZones = {
@@ -276,25 +236,19 @@ Config.SafeZones = {
 -- Optional blacklist for automatic vehicle lock.
 ```
 
-
 ## Config.BlacklistedVehicleModels
 
-Controls blacklisted vehicle models. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 103.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.BlacklistedVehicleModels = {
-    [`polmav`] = true,
+    [joaat('polmav')] = true,
 }
 ```
 
-
 ## Config.Intel
 
-Controls intel. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 107.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Intel = {

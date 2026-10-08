@@ -1,0 +1,103 @@
+{
+  "advanced_car_radio": {
+    "version": "1.2.0",
+    "manifest_sha256": "c9a9e88f5da0fabb4d832e329357b3c326b4b301f1a4d3e0a6e726d3c8bf9950",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "oxmysql",
+      "xsound"
+    ]
+  },
+  "advanced_cablecar": {
+    "version": "1.8.0",
+    "manifest_sha256": "a3843c633d7d22f40cc7a35ce596322db74190378f6530403c4415f5ee00437e",
+    "dependencies": [
+      "ox_lib",
+      "mm_bridge"
+    ]
+  },
+  "advanced_poolcleaner": {
+    "version": "1.2.0",
+    "manifest_sha256": "f8ce963fd4e18843d482a6f0058049615035c338ddf8f05b6401375f8932b91c",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "oxmysql"
+    ]
+  },
+  "advanced_diving": {
+    "version": "1.1.0",
+    "manifest_sha256": "5917797585713fe608f375f5d315a89780d8fd27a4e03373fc352e683b736b82",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "ox_target",
+      "oxmysql"
+    ]
+  },
+  "advanced_orbital": {
+    "version": "1.3.0",
+    "manifest_sha256": "5f720d37f345a80b1757ec64144d840660755e137f62b85ef2ab9593539d9ebc",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "oxmysql"
+    ]
+  },
+  "advanced_pausemenu": {
+    "version": "5.2.0",
+    "manifest_sha256": "5e05cb95f97e990ed0a3f2af30d7ca176b91f042a74cea778b682716a32134e6",
+    "dependencies": [
+      "ox_lib",
+      "mm_bridge"
+    ]
+  },
+  "advanced_yacht": {
+    "version": "5.2.0",
+    "manifest_sha256": "313cccc7e30296b718f117f6650c9e6a6f1908e796398bb8a7da69d178e9be88",
+    "dependencies": [
+      "ox_lib",
+      "oxmysql",
+      "mm_bridge",
+      "/onesync"
+    ]
+  },
+  "advanced_smoking": {
+    "version": "1.1.0",
+    "manifest_sha256": "62825786211bd19821ee65db2dc83a67e29708d85c1dd97ade69d06e52399b4c",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "oxmysql",
+      "/onesync"
+    ]
+  },
+  "advanced_government": {
+    "version": "2.1.0",
+    "manifest_sha256": "138d44da10b1f8d04266b7ccf4cd81187e28a9938374ecf966f62def95eb81f5",
+    "dependencies": [
+      "mm_bridge",
+      "ox_lib",
+      "oxmysql"
+    ]
+  },
+  "advanced_vet_dlc": {
+    "version": "15.11.0",
+    "manifest_sha256": "ed3f06ac5b762f44a95a1941afe5b778df4d473c969f845f0e6e399116d2ee0c",
+    "dependencies": [
+      "oxmysql",
+      "ox_lib",
+      "mm_bridge"
+    ]
+  },
+  "advanced_k9": {
+    "version": "95.1.0",
+    "manifest_sha256": "47eacde41131d93f902b3fe0716b7edc5e19c438921c03bef8bdc7d42710043a",
+    "dependencies": [
+      "oxmysql",
+      "ox_lib",
+      "mm_bridge"
+    ]
+  }
+}

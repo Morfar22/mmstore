@@ -1,7 +1,9 @@
-# Advanced Pausemenu — Usage
+# Pausemenu — Using the menu
 
-ESC opens custom menu. Map/settings cards enter native GTA frontend and closing returns to the custom UI. Inventory uses the configured export/fallback. Shortcut/waypoint entries run configured commands/GPS. /escmenu toggles and /map opens native map. Services use QBox job/duty data.
+ESC or /escmenu opens the configured menu. The map/settings cards open the native GTA frontend; /map opens the native map. Waypoints and shortcuts use your configured commands.
 
-There is no Config.Locale switch here. English setup requires translating relevant config and hardcoded Lua/NUI strings. The archive does not contain the later verified TGIANN/settings fix from another package.
+The server provides the requesting player's identity, active job and money through the bridge. Unsupported balances show a dash. The online list keeps display names and ping. Service duty counts exist in the response but are not rendered in the current UI.
 
-Values are supplied defaults; administrators may customize them. Source: current config and registered gameplay handlers.
+Configure Inventory.command to the command actually registered by your inventory, or supply Inventory.open. Inventory.getWeight is an optional local client hook. Bridge v0.3.0 does not open inventories or read weights. See [bridge integration](bridge.md).
+
+Translate configured/hardcoded labels where needed. Native frontend and inventory UI behavior require live validation against the installed server resources.

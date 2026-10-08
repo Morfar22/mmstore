@@ -1,36 +1,40 @@
+---
+description: "Current configuration excerpts for Advanced K9."
+---
+
 # Advanced K9 — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **95.1.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `config.lua`.
+
+```lua
+Config = {}
+
+-- Resource language: 'da' or 'en'
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `config.lua`, line 4.
+Source file: `config.lua`.
 
 ```lua
 Config.Locale = 'da'
 ```
 
-
 ## Config.LocaleFallback
 
-Controls locale fallback. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 5.
+Source file: `config.lua`.
 
 ```lua
 Config.LocaleFallback = 'en'
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `config.lua`, line 7.
+Source file: `config.lua`.
 
 ```lua
 Config.Debug = false
@@ -39,12 +43,9 @@ Config.Debug = false
 -- Keep this false on production servers.
 ```
 
-
 ## Config.DeveloperMode
 
-Exposes developer/test tools; not normal player permissions.
-
-Source: `config.lua`, line 11.
+Source file: `config.lua`.
 
 ```lua
 Config.DeveloperMode = false
@@ -54,34 +55,25 @@ Config.DeveloperMode = false
 -- A handler must be handler-approved and the second player must be K9-approved.
 ```
 
-
 ## Config.TestMode
 
-Testing access behavior. K9 service approvals remain separate.
-
-Source: `config.lua`, line 16.
+Source file: `config.lua`.
 
 ```lua
 Config.TestMode = false
 ```
 
-
 ## Config.DefaultDogModel
 
-Controls default dog model. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 18.
+Source file: `config.lua`.
 
 ```lua
-Config.DefaultDogModel = `a_c_shepherd`
+Config.DefaultDogModel = joaat('a_c_shepherd')
 ```
-
 
 ## Config.AuthorityJobs
 
-Service authority job allowlist, separate from UI skins/role approval.
-
-Source: `config.lua`, line 20.
+Source file: `config.lua`.
 
 ```lua
 Config.AuthorityJobs = {
@@ -96,12 +88,9 @@ Config.AuthorityJobs = {
 -- Everyone else receives the civilian K9 Companion UI.
 ```
 
-
 ## Config.UISkins
 
-Emergency/civil branding only; does not grant role permissions.
-
-Source: `config.lua`, line 30.
+Source file: `config.lua`.
 
 ```lua
 Config.UISkins = {
@@ -151,12 +140,9 @@ Config.UISkins = {
 }
 ```
 
-
 ## Config.Commands
 
-Player/staff command names; actual registrations are in the commands guide/reference.
-
-Source: `config.lua`, line 76.
+Source file: `config.lua`.
 
 ```lua
 Config.Commands = {
@@ -165,12 +151,9 @@ Config.Commands = {
 }
 ```
 
-
 ## Config.Database
 
-Persistence and automatic schema initialization controls.
-
-Source: `config.lua`, line 81.
+Source file: `config.lua`.
 
 ```lua
 Config.Database = {
@@ -180,18 +163,15 @@ Config.Database = {
 }
 ```
 
-
 ## Config.PhoneIntegration
 
-Provider order/cache and restricted Sky fallback schema lookup.
-
-Source: `config.lua`, line 87.
+Source file: `config.lua`.
 
 ```lua
 Config.PhoneIntegration = {
-    -- auto = try the first running provider in the order below and continue
-    -- through fallbacks until a usable number is found.
-    provider = 'auto',
+    -- Legacy order/provider fields are retained for configuration compatibility.
+    -- Select the active phone in mm_bridge; no local auto probing is performed.
+    provider = 'bridge',
 
     order = {
         'sky_phone',
@@ -229,12 +209,9 @@ Config.PhoneIntegration = {
 }
 ```
 
-
 ## Config.Adoption
 
-Persistent ownership/names/collar/target behavior.
-
-Source: `config.lua`, line 127.
+Source file: `config.lua`.
 
 ```lua
 Config.Adoption = {
@@ -243,7 +220,7 @@ Config.Adoption = {
     autoPairInterval = 5000,
 
     collarDistance = 2.2,
-    targetSystem = 'auto', -- auto / ox_target / qb-target / qtarget
+    targetSystem = 'bridge', -- bridge / none; select target centrally
     targetIcon = 'fa-solid fa-dog',
     targetLabel = 'Tjek K9-halsbånd',
 
@@ -252,12 +229,9 @@ Config.Adoption = {
 }
 ```
 
-
 ## Config.Pairing
 
-Initial proximity/invite/active-team lifetime rules.
-
-Source: `config.lua`, line 141.
+Source file: `config.lua`.
 
 ```lua
 Config.Pairing = {
@@ -277,12 +251,9 @@ Config.Pairing = {
 }
 ```
 
-
 ## Config.Scent
 
-Trail lifetime, sampling/reveal/search, contamination and water/vehicle breaks.
-
-Source: `config.lua`, line 157.
+Source file: `config.lua`.
 
 ```lua
 Config.Scent = {
@@ -332,12 +303,9 @@ Config.Scent = {
 }
 ```
 
-
 ## Config.ScentArticles
 
-Controls scent articles. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 204.
+Source file: `config.lua`.
 
 ```lua
 Config.ScentArticles = {
@@ -348,16 +316,13 @@ Config.ScentArticles = {
 
     -- A scent article is a gameplay/RP sample linked to a nearby player.
     -- It is not an inventory exploit and does not remove any item from target.
-    propModel = `prop_cs_paper_cup`,
+    propModel = joaat('prop_cs_paper_cup'),
 }
 ```
 
-
 ## Config.ManualAlerts
 
-Dog-chosen positive detection presentation.
-
-Source: `config.lua`, line 215.
+Source file: `config.lua`.
 
 ```lua
 Config.ManualAlerts = {
@@ -399,12 +364,9 @@ Config.ManualAlerts = {
 }
 ```
 
-
 ## Config.Sniff
 
-Detection distance, cooldown and illegal item keys; check actual inventory bridge.
-
-Source: `config.lua`, line 253.
+Source file: `config.lua`.
 
 ```lua
 Config.Sniff = {
@@ -424,12 +386,9 @@ Config.Sniff = {
 }
 ```
 
-
 ## Config.Tackle
 
-Controls tackle. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 269.
+Source file: `config.lua`.
 
 ```lua
 Config.Tackle = {
@@ -444,12 +403,9 @@ Config.Tackle = {
 }
 ```
 
-
 ## Config.Vehicle
 
-Cage/seat interaction, saved camera and posture behavior.
-
-Source: `config.lua`, line 280.
+Source file: `config.lua`.
 
 ```lua
 Config.Vehicle = {
@@ -546,12 +502,9 @@ Config.Vehicle = {
 }
 ```
 
-
 ## Config.Swimming
 
-Controls swimming. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 373.
+Source file: `config.lua`.
 
 ```lua
 Config.Swimming = {
@@ -567,12 +520,9 @@ Config.Swimming = {
 }
 ```
 
-
 ## Config.K9Armour
 
-Controls k9 armour. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 386.
+Source file: `config.lua`.
 
 ```lua
 Config.K9Armour = {
@@ -584,12 +534,9 @@ Config.K9Armour = {
 }
 ```
 
-
 ## Config.FallProtection
 
-Controls fall protection. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 394.
+Source file: `config.lua`.
 
 ```lua
 Config.FallProtection = {
@@ -606,12 +553,9 @@ Config.FallProtection = {
 }
 ```
 
-
 ## Config.Parkour
 
-Controls parkour. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 407.
+Source file: `config.lua`.
 
 ```lua
 Config.Parkour = {
@@ -660,12 +604,9 @@ Config.Parkour = {
 }
 ```
 
-
 ## Config.Training
 
-Stay/recall/fetch/care rewards and ball attachment/throw settings.
-
-Source: `config.lua`, line 452.
+Source file: `config.lua`.
 
 ```lua
 Config.Training = {
@@ -690,7 +631,7 @@ Config.Training = {
     recallTimeout = 15000,
     recallDistance = 2.2,
 
-    fetchModel = `prop_tennis_ball`,
+    fetchModel = joaat('prop_tennis_ball'),
     fetchPickupDistance = 1.35,
     fetchReturnDistance = 2.5,
     fetchTimeout = 60000,
@@ -778,12 +719,9 @@ Config.Training = {
 -- V12 keybinds. FiveM key mappings can be rebound by players in Settings > Key Bindings > FiveM.
 ```
 
-
 ## Config.Keybinds
 
-Default mappings; existing client bindings can survive config changes.
-
-Source: `config.lua`, line 560.
+Source file: `config.lua`.
 
 ```lua
 Config.Keybinds = {
@@ -818,12 +756,9 @@ Config.Keybinds = {
 }
 ```
 
-
 ## Config.Stamina
 
-Infinite stamina for animal-player peds, paired or free.
-
-Source: `config.lua`, line 593.
+Source file: `config.lua`.
 
 ```lua
 Config.Stamina = {
@@ -834,12 +769,9 @@ Config.Stamina = {
 }
 ```
 
-
 ## Config.Attack
 
-Controls attack. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 601.
+Source file: `config.lua`.
 
 ```lua
 Config.Attack = {
@@ -856,12 +788,9 @@ Config.Attack = {
 }
 ```
 
-
 ## Config.Notifications
 
-Controls notifications. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 615.
+Source file: `config.lua`.
 
 ```lua
 Config.Notifications = {
@@ -890,12 +819,9 @@ Config.Notifications = {
 }
 ```
 
-
 ## Config.BuriedTraining
 
-Hidden training article lifetime, reveal/radius/visuals.
-
-Source: `config.lua`, line 641.
+Source file: `config.lua`.
 
 ```lua
 Config.BuriedTraining = {
@@ -923,7 +849,7 @@ Config.BuriedTraining = {
 
     -- Hidden training article. It is placed slightly below the actual
     -- terrain, not at the player's ped Z.
-    objectModel = `prop_tennis_ball`,
+    objectModel = joaat('prop_tennis_ball'),
     buriedDepth = 0.18,
 
     groundPlacement = {
@@ -942,12 +868,9 @@ Config.BuriedTraining = {
 }
 ```
 
-
 ## Config.K9Sounds
 
-Optional InteractSound names; files not supplied.
-
-Source: `config.lua`, line 685.
+Source file: `config.lua`.
 
 ```lua
 Config.K9Sounds = {
@@ -967,12 +890,9 @@ Config.K9Sounds = {
 -- This is independent from handler command-emotes.
 ```
 
-
 ## Config.DogEmoteLock
 
-Human animation/control locks and external state bag.
-
-Source: `config.lua`, line 700.
+Source file: `config.lua`.
 
 ```lua
 Config.DogEmoteLock = {
@@ -1026,12 +946,9 @@ Config.DogEmoteLock = {
 -- never remote-control actions on the dog client.
 ```
 
-
 ## Config.DogAgency
 
-Human-controlled dog commands and formal training acceptance.
-
-Source: `config.lua`, line 749.
+Source file: `config.lua`.
 
 ```lua
 Config.DogAgency = {
@@ -1042,12 +959,9 @@ Config.DogAgency = {
 }
 ```
 
-
 ## Config.ExternalTraining
 
-Temporary trainer permissions and command allowlist; not pairing.
-
-Source: `config.lua`, line 756.
+Source file: `config.lua`.
 
 ```lua
 Config.ExternalTraining = {
@@ -1071,12 +985,9 @@ Config.ExternalTraining = {
 }
 ```
 
-
 ## Config.CommandEmotes
 
-Controls command emotes. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 776.
+Source file: `config.lua`.
 
 ```lua
 Config.CommandEmotes = {
@@ -1227,12 +1138,9 @@ Config.CommandEmotes = {
 }
 ```
 
-
 ## Config.K9QuickActions
 
-Direct dog emote/sound command names and default numpad mappings.
-
-Source: `config.lua`, line 923.
+Source file: `config.lua`.
 
 ```lua
 Config.K9QuickActions = {
@@ -1287,12 +1195,9 @@ Config.K9QuickActions = {
 }
 ```
 
-
 ## Config.FoundBark
 
-Controls found bark. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 974.
+Source file: `config.lua`.
 
 ```lua
 Config.FoundBark = {
@@ -1310,12 +1215,9 @@ Config.FoundBark = {
 }
 ```
 
-
 ## Config.CivilK9
 
-Public civil access, independent ranks/rewards and per-feature gates.
-
-Source: `config.lua`, line 989.
+Source file: `config.lua`.
 
 ```lua
 Config.CivilK9 = {
@@ -1489,12 +1391,9 @@ Config.CivilK9 = {
 }
 ```
 
-
 ## Config.Progression
 
-Service levels and feature unlocks, enforced by gameplay code.
-
-Source: `config.lua`, line 1159.
+Source file: `config.lua`.
 
 ```lua
 Config.Progression = {
@@ -1555,12 +1454,9 @@ Config.Progression = {
 }
 ```
 
-
 ## Config.Passport
 
-Working-dog specializations/certification display.
-
-Source: `config.lua`, line 1218.
+Source file: `config.lua`.
 
 ```lua
 Config.Passport = {
@@ -1587,12 +1483,9 @@ Config.Passport = {
 }
 ```
 
-
 ## Config.Admin
 
-Role approvals, staff command and ACE/identifier allowlist.
-
-Source: `config.lua`, line 1241.
+Source file: `config.lua`.
 
 ```lua
 Config.Admin = {
@@ -1606,12 +1499,9 @@ Config.Admin = {
 }
 ```
 
-
 ## Config.SetupEditor
 
-Live setup permissions/editor movement; Vet editorOnly requires saved DB positions.
-
-Source: `config.lua`, line 1253.
+Source file: `config.lua`.
 
 ```lua
 Config.SetupEditor = {
@@ -1627,12 +1517,9 @@ Config.SetupEditor = {
 }
 ```
 
-
 ## Config.VehicleCrashSafe
 
-Soft-cage mode, slot enablement and delayed posture/camera startup.
-
-Source: `config.lua`, line 1265.
+Source file: `config.lua`.
 
 ```lua
 Config.VehicleCrashSafe = {
@@ -1672,12 +1559,9 @@ Config.VehicleCrashSafe = {
 }
 ```
 
-
 ## Config.VehicleStaff
 
-Controls vehicle staff. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 1301.
+Source file: `config.lua`.
 
 ```lua
 Config.VehicleStaff = {
@@ -1686,12 +1570,9 @@ Config.VehicleStaff = {
 }
 ```
 
-
 ## Config.VehicleDiagnostics
 
-Controls vehicle diagnostics. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 1306.
+Source file: `config.lua`.
 
 ```lua
 Config.VehicleDiagnostics = {
@@ -1728,12 +1609,9 @@ Config.VehicleDiagnostics = {
 }
 ```
 
-
 ## Config.Care
 
-Food/water props, framework need sync and overfeeding.
-
-Source: `config.lua`, line 1339.
+Source file: `config.lua`.
 
 ```lua
 Config.Care = {
@@ -1800,12 +1678,9 @@ Config.Care = {
 }
 ```
 
-
 ## Config.StationaryKennels
 
-Service kennel props/placement and management access.
-
-Source: `config.lua`, line 1403.
+Source file: `config.lua`.
 
 ```lua
 Config.StationaryKennels = {
@@ -1822,4 +1697,30 @@ Config.StationaryKennels = {
     editorRotateStep = 2.0,
     deleteAllConfirmation = 'DELETE ALL',
 }
+
+-- Framework/inventory/target/phone providers are selected in mm_bridge/config.lua.
+```
+
+## Config.Bridge
+
+Source file: `config.lua`.
+
+```lua
+Config.Bridge = {
+    authorityAce = 'advanced_k9.authority',
+    allowStandaloneAuthority = false, -- explicit opt-in; civil play remains available
+    databaseIdentity = 'legacy_license', -- do not change without migrating all K9 tables
+    getNeeds = nil, -- server function(src) -> hunger, thirst percentages
+    setNeeds = nil, -- server function(src, hunger, thirst) -> confirmed true
+}
+-- Enable only when using one of the supplied k9_* phone adapters.
+-- mm_bridge must allow advanced_k9 as a CustomAdapterOwners entry.
+```
+
+## Config.PhoneIntegration.registerLegacyAdapters
+
+Source file: `config.lua`.
+
+```lua
+Config.PhoneIntegration.registerLegacyAdapters = false
 ```

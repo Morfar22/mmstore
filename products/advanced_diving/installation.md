@@ -1,25 +1,39 @@
+---
+description: "Dependencies and upgrade steps for Advanced Diving 1.1.0."
+---
+
 # Advanced Diving — Installation
 
+{% hint style="info" %}
+Use the bridge release **1.1.0** with **mm_bridge 0.3.0+**. External providers are not included.
+{% endhint %}
+
+## 1. Prepare the resource
+
+Back up the current resource and database. Keep the folder named `advanced_diving`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
+
+## 2. Start dependencies
+
+Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+
 ```cfg
-ensure oxmysql
+ensure mm_bridge
 ensure ox_lib
-ensure qbx_core
 ensure ox_target
+ensure oxmysql
 ensure advanced_diving
 ```
 
-Enable OneSync. Configure dock, boat spawn/return and objectives for your map. Gear items are disabled by default. With RequireGearItem true, install ox_inventory and the named diving_gear item; no TGIANN gear bridge is supplied. Lift bag uses prop_beachball_02 as a placeholder; a custom streamed model is optional and absent. No diving MLO is supplied.
+This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
 
-## Database
+## 3. Prepare data and items
 
-Automatic creation exists. Optional manual schema: `install.sql`.
+No separate SQL file is included; see the resource database initialization where applicable.
 
-| Resource-owned table |
-| --- |
-| `advanced_diving_players` |
+Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
 
-## Staff ACE
+## 4. Configure and verify
 
-Normal player use needs no additional product ACE; see restricted developer setup where relevant.
+This release still directly requires ox_target for its job NPC. Choosing qb-target/qtarget in mm_bridge does not replace that integration. Optional gear checks use the bridge; gear is not consumed. Failed crew payout completes progression with zero credited earnings and requires reconciliation.
 
-Source: manifest/config and loaded server database/bridge code.
+Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.

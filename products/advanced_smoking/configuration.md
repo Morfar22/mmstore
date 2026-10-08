@@ -1,16 +1,19 @@
+---
+description: "Current configuration excerpts for Advanced Smoking."
+---
+
 # Advanced Smoking — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.1.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
 
-## Config table
-
-All settings in the single Config table are shown below. This resource has no generic locale selector.
+Source file: `config.lua`.
 
 ```lua
 Config = {
-    Inventory = 'tgiann-inventory',
+    -- Select framework/inventory/target in mm_bridge/config.lua.
+    Storage = { enabled = true, resources = { tgiann = 'tgiann-inventory', ox_inventory = 'ox_inventory' }, custom = nil },
     WheelKey = 'G', PuffKey = 'H',
     MaxInhaleMs = 4000, MaxHoldMs = 5000, PuffCooldownMs = 1800,
     ShareDistance = 2.5, OfferSeconds = 20,

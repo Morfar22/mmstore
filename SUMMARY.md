@@ -1,20 +1,36 @@
 # Summary
 
-* [MM - Store Documentation](README.md)
+* [Welcome to MM – Store](README.md)
 
 ## Getting started
 
-* [Compatibility and dependencies](getting-started/compatibility.md)
-* [Getting started](getting-started/installation.md)
-* [Permissions and staff setup](getting-started/permissions.md)
+* [Quick start](getting-started/installation.md)
+* [Permissions](getting-started/permissions.md)
 * [Keybinds and conflicts](getting-started/keybinds.md)
 * [Updates and rollback](getting-started/updates.md)
-* [Support checklist](getting-started/support.md)
-* [Import into GitBook](getting-started/gitbook-import.md)
+* [Support](getting-started/support.md)
+* [GitBook setup](getting-started/gitbook-import.md)
+  * [Visual setup](getting-started/visual-setup.md)
 
-## Products
+## MM Bridge
+
+* [Bridge overview](bridge/README.md)
+  * [Product compatibility](bridge/compatibility.md)
+  * [Configuration](bridge/configuration.md)
+  * [Public API](bridge/api.md)
+  * [Custom adapters](bridge/custom-adapters.md)
+  * [Phones](bridge/phones.md)
+  * [Billing](bridge/billing.md)
+  * [Troubleshooting](bridge/troubleshooting.md)
+  * [Testing](bridge/testing.md)
+
+## Advanced series
+
+* [Resource catalog](products/README.md)
+
 
 * [Advanced K9](products/advanced_k9/README.md)
+  * [Bridge integration](products/advanced_k9/bridge.md)
   * [Installation](products/advanced_k9/installation.md)
   * [Commands and controls](products/advanced_k9/commands.md)
   * [Usage](products/advanced_k9/usage.md)
@@ -27,6 +43,7 @@
   * [Internal registration reference](products/advanced_k9/events.md)
   * [SQL and installation reference](products/advanced_k9/install-reference.md)
 * [Advanced Vet DLC](products/advanced_vet_dlc/README.md)
+  * [Bridge integration](products/advanced_vet_dlc/bridge.md)
   * [Installation](products/advanced_vet_dlc/installation.md)
   * [Commands and controls](products/advanced_vet_dlc/commands.md)
   * [Usage](products/advanced_vet_dlc/usage.md)
@@ -39,6 +56,7 @@
   * [Internal registration reference](products/advanced_vet_dlc/events.md)
   * [SQL and installation reference](products/advanced_vet_dlc/install-reference.md)
 * [Advanced Government](products/advanced_government/README.md)
+  * [Bridge integration](products/advanced_government/bridge.md)
   * [Installation](products/advanced_government/installation.md)
   * [Commands and controls](products/advanced_government/commands.md)
   * [Usage](products/advanced_government/usage.md)
@@ -50,6 +68,7 @@
   * [Internal registration reference](products/advanced_government/events.md)
   * [SQL and installation reference](products/advanced_government/install-reference.md)
 * [Advanced Orbital](products/advanced_orbital/README.md)
+  * [Bridge integration](products/advanced_orbital/bridge.md)
   * [Installation](products/advanced_orbital/installation.md)
   * [Commands and controls](products/advanced_orbital/commands.md)
   * [Usage](products/advanced_orbital/usage.md)
@@ -60,6 +79,7 @@
   * [Internal registration reference](products/advanced_orbital/events.md)
   * [SQL and installation reference](products/advanced_orbital/install-reference.md)
 * [Advanced Pausemenu](products/advanced_pausemenu/README.md)
+  * [Bridge integration](products/advanced_pausemenu/bridge.md)
   * [Installation](products/advanced_pausemenu/installation.md)
   * [Commands and controls](products/advanced_pausemenu/commands.md)
   * [Usage](products/advanced_pausemenu/usage.md)
@@ -69,6 +89,7 @@
   * [Internal registration reference](products/advanced_pausemenu/events.md)
   * [SQL and installation reference](products/advanced_pausemenu/install-reference.md)
 * [Advanced Cablecar](products/advanced_cablecar/README.md)
+  * [Bridge integration](products/advanced_cablecar/bridge.md)
   * [Installation](products/advanced_cablecar/installation.md)
   * [Commands and controls](products/advanced_cablecar/commands.md)
   * [Usage](products/advanced_cablecar/usage.md)
@@ -78,6 +99,7 @@
   * [Internal registration reference](products/advanced_cablecar/events.md)
   * [SQL and installation reference](products/advanced_cablecar/install-reference.md)
 * [Advanced Car Radio](products/advanced_car_radio/README.md)
+  * [Bridge integration](products/advanced_car_radio/bridge.md)
   * [Installation](products/advanced_car_radio/installation.md)
   * [Commands and controls](products/advanced_car_radio/commands.md)
   * [Usage](products/advanced_car_radio/usage.md)
@@ -87,6 +109,7 @@
   * [Internal registration reference](products/advanced_car_radio/events.md)
   * [SQL and installation reference](products/advanced_car_radio/install-reference.md)
 * [Advanced Diving](products/advanced_diving/README.md)
+  * [Bridge integration](products/advanced_diving/bridge.md)
   * [Installation](products/advanced_diving/installation.md)
   * [Commands and controls](products/advanced_diving/commands.md)
   * [Usage](products/advanced_diving/usage.md)
@@ -97,6 +120,7 @@
   * [Internal registration reference](products/advanced_diving/events.md)
   * [SQL and installation reference](products/advanced_diving/install-reference.md)
 * [Advanced Poolcleaner](products/advanced_poolcleaner/README.md)
+  * [Bridge integration](products/advanced_poolcleaner/bridge.md)
   * [Installation](products/advanced_poolcleaner/installation.md)
   * [Commands and controls](products/advanced_poolcleaner/commands.md)
   * [Usage](products/advanced_poolcleaner/usage.md)
@@ -107,6 +131,7 @@
   * [Internal registration reference](products/advanced_poolcleaner/events.md)
   * [SQL and installation reference](products/advanced_poolcleaner/install-reference.md)
 * [Advanced Smoking](products/advanced_smoking/README.md)
+  * [Bridge integration](products/advanced_smoking/bridge.md)
   * [Installation](products/advanced_smoking/installation.md)
   * [Commands and controls](products/advanced_smoking/commands.md)
   * [Usage](products/advanced_smoking/usage.md)
@@ -118,6 +143,7 @@
   * [Internal registration reference](products/advanced_smoking/events.md)
   * [SQL and installation reference](products/advanced_smoking/install-reference.md)
 * [Advanced Yacht](products/advanced_yacht/README.md)
+  * [Bridge integration](products/advanced_yacht/bridge.md)
   * [Installation](products/advanced_yacht/installation.md)
   * [Commands and controls](products/advanced_yacht/commands.md)
   * [Usage](products/advanced_yacht/usage.md)
@@ -128,9 +154,15 @@
   * [Internal registration reference](products/advanced_yacht/events.md)
   * [SQL and installation reference](products/advanced_yacht/install-reference.md)
 
+
 ## Reference
 
-* [Bundled attribution and assets](reference/attribution.md)
-* [Source review and release prerequisites](reference/review-notes.md)
-* [Complete source inventory](reference/source-inventory.md)
-* [Frequently asked questions](reference/faq.md)
+* [FAQ](reference/faq.md)
+* [Release inventory](reference/source-inventory.md)
+* [Review notes](reference/review-notes.md)
+* [Attribution](reference/attribution.md)
+* [Documentation changelog](reference/changelog.md)
+
+## Additional setup references
+
+* [Compatibility](getting-started/compatibility.md)

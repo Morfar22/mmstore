@@ -1,212 +1,166 @@
+---
+description: "Current configuration excerpts for Advanced Diving."
+---
+
 # Advanced Diving — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.1.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `shared/config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `shared/config.lua`, line 3.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Locale = 'da' -- da / en
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `shared/config.lua`, line 4.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Debug = false
 ```
 
-
 ## Config.MaxCrewSize
 
-Controls max crew size. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 5.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxCrewSize = 4
 ```
 
-
 ## Config.InviteDistance
 
-Controls invite distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 6.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.InviteDistance = 35.0
 ```
 
-
 ## Config.CrewBonusPerExtraMember
 
-Controls crew bonus per extra member. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 7.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.CrewBonusPerExtraMember = 0.05
 ```
 
-
 ## Config.MaxCrewBonus
 
-Controls max crew bonus. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 8.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxCrewBonus = 0.15
 ```
 
-
 ## Config.PaymentAccount
 
-Controls payment account. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 9.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.PaymentAccount = 'bank'
 ```
 
-
 ## Config.RequireGearItem
 
-Controls require gear item. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 10.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.RequireGearItem = false
 ```
 
-
 ## Config.GearItem
 
-Controls gear item. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 11.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.GearItem = 'diving_gear'
 ```
 
-
 ## Config.SonarKey
 
-Controls sonar key. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 12.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.SonarKey = 'G'
 ```
 
-
 ## Config.SonarCooldown
 
-Controls sonar cooldown. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 13.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.SonarCooldown = 15000
 ```
 
-
 ## Config.ObjectInteractDistance
 
-Controls object interact distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 14.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ObjectInteractDistance = 2.8
 ```
 
-
 ## Config.ServerInteractDistance
 
-Controls server interact distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 15.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ServerInteractDistance = 20.0 -- generous server-side tolerance; client interaction remains limited to 2.8m
 ```
 
-
 ## Config.ObjectiveActionGraceMs
 
-Controls objective action grace ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 16.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ObjectiveActionGraceMs = 750 -- latency grace; server still validates action duration
 ```
 
-
 ## Config.ReturnDistance
 
-Controls return distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 17.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ReturnDistance = 16.0
 ```
 
-
 ## Config.BoatModel
 
-Controls boat model. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 18.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.BoatModel = 'dinghy'
 ```
 
-
 ## Config.BoatPlatePrefix
 
-Controls boat plate prefix. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 19.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.BoatPlatePrefix = 'DIVE'
 ```
 
-
 ## Config.LiftBagModel
 
-Controls lift bag model. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 20.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.LiftBagModel = 'prop_beachball_02' -- replace with a custom lift-bag prop if desired
 ```
 
-
 ## Config.JobPed
 
-Diving dock worker model/position.
-
-Source: `shared/config.lua`, line 22.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.JobPed = {
@@ -216,34 +170,25 @@ Config.JobPed = {
 }
 ```
 
-
 ## Config.BoatSpawn
 
-Controls boat spawn. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 28.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.BoatSpawn = vec4(-812.73, -1502.66, 0.08, 109.0)
 ```
 
-
 ## Config.BoatReturn
 
-Controls boat return. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 29.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.BoatReturn = vec3(-811.35, -1505.30, 0.0)
 ```
 
-
 ## Config.Levels
 
-Diving total XP thresholds.
-
-Source: `shared/config.lua`, line 31.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Levels = {
@@ -265,12 +210,9 @@ Config.Levels = {
 }
 ```
 
-
 ## Config.Contracts
 
-Diving contract unlock/pay/XP/objective model/type/coords.
-
-Source: `shared/config.lua`, line 49.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Contracts = {
@@ -348,4 +290,23 @@ Config.Contracts = {
         }
     }
 }
+
+function DivingGetLevelFromXP(xp)
+    xp = tonumber(xp) or 0
+    local level = 1
+    for i = 1, #Config.Levels do
+        if xp >= Config.Levels[i].xp then level = Config.Levels[i].level end
+    end
+    return level
+end
+
+function DivingNextLevelXP(xp)
+    local current = DivingGetLevelFromXP(xp)
+    for i = 1, #Config.Levels do
+        if Config.Levels[i].level == current + 1 then
+            return Config.Levels[i].xp
+        end
+    end
+    return Config.Levels[#Config.Levels].xp
+end
 ```

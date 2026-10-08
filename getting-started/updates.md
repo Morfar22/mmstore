@@ -1,7 +1,11 @@
-# Updates and rollback
+# Update and roll back
 
-Back up code and all relevant tables. Merge config fields while preserving map/job/account customizations. Fresh-install SQL is not an arbitrary fork migration. Government v2 migration assumes a compatible v1 schema; automatic Vet/K9/Yacht changes also need review for forks.
+1. Back up the resource config, SQL tables, inventory storage and mm_bridge/billing-journal.json.
+2. Read the release integration boundary and local hooks before replacing files.
+3. Merge config changes, start providers/bridge/adapters/consumers in order and test on staging.
+4. Confirm old ownership/progression/patient/adoption data still loads.
+5. Keep the previous release until your live workflow passes.
 
-Restart full server for framework jobs/items/wage-hook changes when hot reload is unsupported. Preserve metadata, invoices, loans, stashes and placed objects. Test multiplayer after integration changes.
+Do not switch framework/inventory and upgrade gameplay in one untracked step. There is no automatic cross-framework data or stash migration.
 
-Rollback by stopping affected resource and restoring a compatible code/config/database set. Reconcile in-flight invoices/returns/payments before deleting tables or stashes; reverting code against upgraded schema may be incompatible.
+For rollback, stop consumers, restore the old code/config and compatible dependencies, and restore data only after reconciling any completed payments or SQL writes. Replacing files alone does not undo financial operations.

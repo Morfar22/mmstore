@@ -1,80 +1,70 @@
+---
+description: "Current configuration excerpts for Advanced Car Radio."
+---
+
 # Advanced Car Radio — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.2.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `shared/config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `shared/config.lua`, line 3.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Locale = 'da'
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `shared/config.lua`, line 4.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.Debug = false
 ```
 
-
 ## Config.OpenCommand
 
-Controls open command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 6.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.OpenCommand = 'carradio'
 ```
 
-
 ## Config.DefaultKey
 
-Controls default key. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 7.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DefaultKey = 'F7'
 ```
 
-
 ## Config.RequireVehicle
 
-Controls require vehicle. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 8.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.RequireVehicle = true
 ```
 
-
 ## Config.RequireDriverToControl
 
-Controls require driver to control. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 9.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.RequireDriverToControl = false
 ```
 
-
 ## Config.AllowPassengers
 
-Controls allow passengers. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 10.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.AllowPassengers = true
@@ -82,45 +72,33 @@ Config.AllowPassengers = true
 -- xSound / 3D audio
 ```
 
-
 ## Config.MaxDistance
 
-Controls max distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 13.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxDistance = 32.0
 ```
 
-
 ## Config.ActivationDistance
 
-Controls activation distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 14.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ActivationDistance = 48.0
 ```
 
-
 ## Config.PositionRefreshMs
 
-Controls position refresh ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 15.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.PositionRefreshMs = 250
 ```
 
-
 ## Config.DefaultVehicleVolume
 
-Controls default vehicle volume. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 16.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DefaultVehicleVolume = 0.65
@@ -130,12 +108,9 @@ Config.DefaultVehicleVolume = 0.65
 -- The listener's own inside/outside volume setting is applied afterwards.
 ```
 
-
 ## Config.CabinLeakage
 
-Source vehicle sound leakage multipliers, independent of listener volumes.
-
-Source: `shared/config.lua`, line 21.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.CabinLeakage = {
@@ -153,12 +128,9 @@ Config.CabinLeakage = {
 -- Personal listener volumes. These do not change what other players hear.
 ```
 
-
 ## Config.DefaultSettings
 
-Per-character listening preferences and Now Playing.
-
-Source: `shared/config.lua`, line 34.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DefaultSettings = {
@@ -169,78 +141,57 @@ Config.DefaultSettings = {
 }
 ```
 
-
 ## Config.NowPlayingDurationMs
 
-Controls now playing duration ms. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 41.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.NowPlayingDurationMs = 6500
 ```
 
-
 ## Config.PersistenceIntervalSeconds
 
-Controls persistence interval seconds. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 42.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.PersistenceIntervalSeconds = 15
 ```
 
-
 ## Config.ResumeAfterRestart
 
-Controls resume after restart. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 43.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ResumeAfterRestart = true
 ```
 
-
 ## Config.MaxPlaylists
 
-Controls max playlists. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 45.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxPlaylists = 30
 ```
 
-
 ## Config.MaxTracksPerPlaylist
 
-Controls max tracks per playlist. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 46.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxTracksPerPlaylist = 250
 ```
 
-
 ## Config.MaxSavedTracksPerVehicle
 
-Controls max saved tracks per vehicle. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 47.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxSavedTracksPerVehicle = 150
 ```
 
-
 ## Config.MaxQueueSize
 
-Controls max queue size. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 48.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxQueueSize = 250
@@ -248,12 +199,9 @@ Config.MaxQueueSize = 250
 -- Easy metadata lookup for pasted YouTube links. No API key required.
 ```
 
-
 ## Config.ResolveYouTubeMetadata
 
-Controls resolve you tube metadata. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 51.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.ResolveYouTubeMetadata = true
@@ -262,56 +210,41 @@ Config.ResolveYouTubeMetadata = true
 -- Example: { ['youtube.com'] = true, ['www.youtube.com'] = true, ['youtu.be'] = true }
 ```
 
-
 ## Config.AllowedHosts
 
-Media URL host allowlist; empty accepts valid HTTP/HTTPS.
-
-Source: `shared/config.lua`, line 55.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.AllowedHosts = {}
 ```
 
-
 ## Config.MaxUrlLength
 
-Controls max url length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 56.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxUrlLength = 1024
 ```
 
-
 ## Config.MaxTitleLength
 
-Controls max title length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 57.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxTitleLength = 160
 ```
 
-
 ## Config.MaxArtistLength
 
-Controls max artist length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 58.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxArtistLength = 120
 ```
 
-
 ## Config.MaxArtworkLength
 
-Controls max artwork length. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 59.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.MaxArtworkLength = 1024
@@ -319,12 +252,9 @@ Config.MaxArtworkLength = 1024
 -- If true, /carradio only opens for the driver. Independent from control permissions.
 ```
 
-
 ## Config.DriverOnlyOpen
 
-Controls driver only open. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `shared/config.lua`, line 62.
+Source file: `shared/config.lua`.
 
 ```lua
 Config.DriverOnlyOpen = false

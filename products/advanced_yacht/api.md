@@ -1,20 +1,14 @@
 # Advanced Yacht — Exports and integrations
 
-Server exports:
+{% hint style="info" %}
+Server exports are for trusted resources. Enforce caller authorization and source/amount checks. Client menu actions are not proof of payment or permission. Internal events are not a public adapter API.
+{% endhint %}
 
-| Export | Parameters | Return |
-| --- | --- | --- |
-| HasYachtAccess | src, yachtId | allowed, isOwner, role for explicit owner/access list |
-| GetYacht | yachtId | Current in-memory yacht row, or nil |
+Items and money use the bridge. Stashes are a local secured extension: ox_inventory and TGIANN are provided; QB/custom stash support requires an adapter with real open/transfer controls. Framework changes do not migrate yacht ownership or stash contents.
 
-```lua
--- SERVER
-local allowed, owner, role = exports.advanced_yacht:HasYachtAccess(src, yachtId)
-local yacht = exports.advanced_yacht:GetYacht(yachtId)
-```
+| Export | Side | Arguments | Implementation |
+| --- | --- | --- | --- |
+| `HasYachtAccess` | server | `src, yachtId` | `server/main.lua` |
+| `GetYacht` | server | `yachtId` | `server/main.lua` |
 
-HasYachtAccess is the explicit owner/guest-list check. Service/vehicle access modes are evaluated separately in modeAllows; public everyone access does not make the explicit export return true. Organization/club/friends categories map to explicit crew/guest records.
-
-Storage uses ox_inventory RegisterStash and open access checks. Wardrobe provider is configuration-driven. Purchased fleet is server-managed and position validation is separate from client visual yacht IPLs. These exports expose current runtime data; avoid mutating returned tables as an undocumented write API.
-
-Source: export declarations and loaded framework/inventory/billing bridges in the supplied product.
+Dynamic exports are described in their specialized integration guides; this literal index is not an exhaustive list of dynamically generated names. Consult [bridge integration](bridge.md) for return contracts and provider limitations, and [internal registrations](events.md) for module routing.

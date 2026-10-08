@@ -1,12 +1,17 @@
 {
-  "content_pages": 125,
-  "navigation_links": 125,
-  "relative_content_links_checked": 70,
-  "source_files_preserved": 221,
-  "source_javascript_syntax_pass": 10,
-  "reader_javascript_syntax_pass": true,
+  "markdown_pages": 149,
+  "navigation_pages": 148,
+  "local_links_checked": 400,
   "errors": [],
-  "live_fivem_tested": false,
-  "lua_syntax_tested": false,
-  "database_migrations_tested": false
+  "online_published": false,
+  "script_gameplay_tested_in_this_task": false,
+  "preview_checks": {
+    "routes": 148,
+    "search_handler": "passed",
+    "theme_and_menu_handlers": "passed",
+    "skip_link": "passed",
+    "javascript_syntax": "passed",
+    "cover_image_visually_reviewed": true,
+    "full_browser_layout_reviewed": false
+  }
 }

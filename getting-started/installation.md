@@ -1,28 +1,31 @@
-# Getting started
+# Install your first resource
 
-1. Back up replaced resources and database.
-2. Extract product folders under resources; keep folder names.
-3. Read product dependencies and install only required providers.
-4. Merge item/job snippets into existing definitions, preserving other entries.
-5. Import mandatory SQL or enable documented automatic creation. Fresh schemas are not universal upgrade migrations.
-6. Configure real map points, access, economy and integrations.
-7. Start dependencies first, then product; inspect console/F8.
-8. Run the product acceptance checklist with two players for shared workflows.
+## 1. Choose the product and release
 
-## Startup ordering example
+Use the release shown in the [catalog](../products/README.md). The documentation targets the bridge releases, not the pre-bridge archive.
 
-Choose only supported/adapted inventory integrations for your server; do not blindly enable two inventories.
+## 2. Start the integration layer
 
 ```cfg
 ensure oxmysql
 ensure ox_lib
-ensure qbx_core
-ensure ox_target
-# Start selected inventory, phone, audio, appearance and optional bridges first.
-# Start nrp_core_systems before Government/default Vet billing.
+# Start your chosen framework/inventory/target/phone here.
+ensure mm_bridge
+# Start an external custom adapter here, if selected.
 ensure advanced_k9
-ensure advanced_vet_dlc
-# Add other products after their dependencies.
+# Add only the products you actually install.
 ```
 
-No external dependency resources are included. Government requires NRP banking adaptation/supply; Smoking needs missing item/icon distribution files. These prerequisites must be resolved before customer installation.
+This is an example, not a list of dependencies for every product. Car Radio needs xsound; Diving currently needs ox_target; Government society settlement needs its selected banking adapter. Check the product installation page.
+
+## 3. Configure providers once
+
+Edit mm_bridge/config.lua. Select QBox, QBCore, ESX or standalone only where the product's gameplay requirements are met. Choose one inventory/target and any required phone/billing adapter. Then edit the product's own config for prices, access, locations and controls.
+
+## 4. Prepare SQL and items
+
+Use the product SQL/install reference. Keep existing identity keys, records and stored items. Merge item entries and install needed optional assets; do not overwrite whole registries.
+
+## 5. Verify one real workflow
+
+Complete a solo workflow, a two-player flow if applicable, a reconnect and one failed-provider case. Confirm payment/item consumption happens once. Local mocked checks do not certify gameplay or your installed provider versions.

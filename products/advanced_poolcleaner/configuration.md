@@ -1,25 +1,30 @@
+---
+description: "Current configuration excerpts for Advanced Poolcleaner."
+---
+
 # Advanced Poolcleaner — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.2.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `config.lua`, line 3.
+Source file: `config.lua`.
 
 ```lua
 Config.Locale = 'da'
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `config.lua`, line 4.
+Source file: `config.lua`.
 
 ```lua
 Config.Debug = false
@@ -27,89 +32,65 @@ Config.Debug = false
 -- public = alle kan tage jobbet. whitelist = kræver Config.RequiredJob.
 ```
 
-
 ## Config.JobMode
 
-Controls job mode. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 7.
+Source file: `config.lua`.
 
 ```lua
 Config.JobMode = 'public'
 ```
 
-
 ## Config.RequiredJob
 
-Controls required job. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 8.
+Source file: `config.lua`.
 
 ```lua
 Config.RequiredJob = 'poolcleaner'
 ```
 
-
 ## Config.RequireOnDuty
 
-Controls require on duty. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 9.
+Source file: `config.lua`.
 
 ```lua
 Config.RequireOnDuty = false
 ```
 
-
 ## Config.AdminAce
 
-Controls admin ace. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 11.
+Source file: `config.lua`.
 
 ```lua
 Config.AdminAce = 'poolcleaner.admin'
 ```
 
-
 ## Config.Command
 
-Controls command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 12.
+Source file: `config.lua`.
 
 ```lua
 Config.Command = 'pooljob'
 ```
 
-
 ## Config.CreatorCommand
 
-Controls creator command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 13.
+Source file: `config.lua`.
 
 ```lua
 Config.CreatorCommand = 'poolcreator'
 ```
 
-
 ## Config.DebugCommand
 
-Controls debug command. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 14.
+Source file: `config.lua`.
 
 ```lua
 Config.DebugCommand = 'pooldebug'
 ```
 
-
 ## Config.Office
 
-Controls office. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 16.
+Source file: `config.lua`.
 
 ```lua
 Config.Office = {
@@ -131,12 +112,9 @@ Config.Office = {
 }
 ```
 
-
 ## Config.Team
 
-Pool group size, invite range, per-member/split payout and bonus.
-
-Source: `config.lua`, line 34.
+Source file: `config.lua`.
 
 ```lua
 Config.Team = {
@@ -147,12 +125,9 @@ Config.Team = {
 }
 ```
 
-
 ## Config.Security
 
-Controls security. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 41.
+Source file: `config.lua`.
 
 ```lua
 Config.Security = {
@@ -163,12 +138,9 @@ Config.Security = {
 }
 ```
 
-
 ## Config.Missions
 
-Pool route size, task counts, pay/XP/reputation.
-
-Source: `config.lua`, line 48.
+Source file: `config.lua`.
 
 ```lua
 Config.Missions = {
@@ -196,31 +168,25 @@ Config.Missions = {
 }
 ```
 
-
 ## Config.PaymentAccount
 
-Controls payment account. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 72.
+Source file: `config.lua`.
 
 ```lua
 Config.PaymentAccount = 'bank'
 
 -- Valgfrit item-system. 'none' kræver ingen inventory-items.
--- Sæt mode = 'ox_inventory' eller 'tgiann-inventory' for item-krav.
--- Ved et andet inventory kan server/inventory_bridge.lua tilpasses ét sted.
+-- Sæt mode = 'bridge' for item-krav med inventory valgt i mm_bridge/config.lua.
+-- Legacy modes ox_inventory/tgiann-inventory kræver en matchende bridge-provider.
 ```
-
 
 ## Config.Inventory
 
-Actual inventory adapter/requirements; string/provider alone does not implement a new adapter.
-
-Source: `config.lua`, line 77.
+Source file: `config.lua`.
 
 ```lua
 Config.Inventory = {
-    mode = 'none', -- none | ox_inventory | tgiann-inventory | custom
+    mode = 'none', -- none | bridge | ox_inventory | tgiann-inventory (custom fails closed)
     consumeOnComplete = true,
     requirements = {
         chemicals = { item = 'pool_chemicals', amount = 1 },
@@ -231,12 +197,9 @@ Config.Inventory = {
 -- Færdigheder er bevidst simple og originale. Serveren beregner alle bonusser.
 ```
 
-
 ## Config.Skills
 
-Pool unlock prerequisites/costs; actual effects in server/client implementation.
-
-Source: `config.lua`, line 87.
+Source file: `config.lua`.
 
 ```lua
 Config.Skills = {
@@ -273,23 +236,17 @@ Config.Skills = {
 }
 ```
 
-
 ## Config.TaskOrder
 
-Controls task order. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 120.
+Source file: `config.lua`.
 
 ```lua
 Config.TaskOrder = { 'vacuum', 'skim', 'sweep', 'backwash', 'chemicals', 'filter' }
 ```
 
-
 ## Config.Tasks
 
-Pool action durations, animations, props and checks.
-
-Source: `config.lua`, line 122.
+Source file: `config.lua`.
 
 ```lua
 Config.Tasks = {
@@ -345,12 +302,9 @@ Config.Tasks = {
 -- Hver task kan have sit eget punkt. Anchor bruges til mission-sortering/debug.
 ```
 
-
 ## Config.DefaultPools
 
-Example pool coordinates; add precise DB locations with creator.
-
-Source: `config.lua`, line 173.
+Source file: `config.lua`.
 
 ```lua
 Config.DefaultPools = {

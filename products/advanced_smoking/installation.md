@@ -1,36 +1,39 @@
+---
+description: "Dependencies and upgrade steps for Advanced Smoking 1.1.0."
+---
+
 # Advanced Smoking — Installation
 
+{% hint style="info" %}
+Use the bridge release **1.1.0** with **mm_bridge 0.3.0+**. External providers are not included.
+{% endhint %}
+
+## 1. Prepare the resource
+
+Back up the current resource and database. Keep the folder named `advanced_smoking`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
+
+## 2. Start dependencies
+
+Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+
 ```cfg
-ensure oxmysql
+ensure mm_bridge
 ensure ox_lib
-ensure qbx_core
-ensure tgiann-inventory
-ensure ox_target
+ensure oxmysql
+ensure /onesync
 ensure advanced_smoking
 ```
 
-This is a TGIANN-style adapter, not a generic inventory switch. Config.Inventory is the resource name. It requires native TGIANN exports/hooks.
+This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
 
-**Missing distribution files:** the archive has the 41-product catalog but no Smoking inventory item definition file or 41 item icons mentioned in README. Define every smk_* catalog item, including four loose cigarettes and the roach. Attach client export advanced_smoking.useItem for usable items and preserve unique metadata/nonstacking behavior. Use the catalog page for exact keys/weights.
+## 3. Prepare data and items
 
-Verify GetItemBySlot, GetPlayerItems, UpdateItemMetadata, CanCarryItem, AddItem, RemoveItem, registerHook, RegisterStash and OpenInventory. Missing hooks leave containers locked with a console error. Install items before opening shop sales. Give initial owner via `smokeshopowner <server-id>` in console or with admin ACE. Ownership is a separate persistent record, not a QBox job.
+No separate SQL file is included; see the resource database initialization where applicable.
 
-## Database
+Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
 
-Automatic creation exists. Four schemas are in startup code.
+## 4. Configure and verify
 
-| Resource-owned table |
-| --- |
-| `nrp_smoking_deliveries` |
-| `nrp_smoking_profiles` |
-| `nrp_smoking_props` |
-| `nrp_smoking_shops` |
+Full item use requires individual slots and persistent metadata. Plain ESX inventory and standalone without a suitable inventory cannot run the full system. QB inventory supports ordinary items; containers remain locked until a safe local stash adapter is configured. Shop credits marked processing/review require reconciliation.
 
-## Staff ACE
-
-```cfg
-add_ace group.admin advanced_smoking.admin allow
-```
-
-
-Source: manifest/config and loaded server database/bridge code.
+Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.

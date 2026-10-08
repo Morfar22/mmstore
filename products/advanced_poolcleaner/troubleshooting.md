@@ -1,5 +1,18 @@
 # Advanced Poolcleaner — Troubleshooting
 
+{% hint style="warning" %}
+Optional item requirements default to Inventory.mode='none'. Select mode='bridge' for generic bridge inventory reads. Required item mutations and payouts must be confirmed; failed payout completes progression but records zero earnings and needs staff reconciliation.
+{% endhint %}
+
+## Bridge diagnostics
+
+Run `mmbridge_status` in the server console. Confirm the selected provider is ready; an explicit missing provider never silently falls back. If auto detects multiple candidates, choose one explicitly. Restart dependent resources after bridge/provider restarts.
+
+For failed credits, item mutations or billing operations, retain the exact error and reconcile provider records before retrying. Do not assume an error proves that no external mutation occurred.
+
+See [support](../../getting-started/support.md) and [bridge troubleshooting](../../bridge/troubleshooting.md).
+
+
 | Symptom | Check |
 | --- | --- |
 | No suitable pools | Need sufficient task types, six for long route; use creator. |

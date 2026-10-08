@@ -1,10 +1,8 @@
 # Advanced Car Radio — SQL and installation reference
 
-The following files are included in the uploaded product. No new SQL migration or third-party schema is invented here. Fresh CREATE TABLE IF NOT EXISTS definitions do not necessarily alter older existing tables. Inventory snippets can have server/client callbacks particular to a provider; use the matching file.
+Keep existing data when upgrading. Native install templates are examples for the indicated provider; merge entries, never replace your whole item registry. Source files below belong to release 1.2.0.
 
 ## sql/install.sql
-
-Original supplied contents. Merge/import only as directed by the installation guide; this is not an automatically executed migration.
 
 ```sql
 CREATE TABLE IF NOT EXISTS `advanced_car_radio_settings` (

@@ -1,28 +1,38 @@
+---
+description: "Dependencies and upgrade steps for Advanced Poolcleaner 1.2.0."
+---
+
 # Advanced Poolcleaner — Installation
 
+{% hint style="info" %}
+Use the bridge release **1.2.0** with **mm_bridge 0.3.0+**. External providers are not included.
+{% endhint %}
+
+## 1. Prepare the resource
+
+Back up the current resource and database. Keep the folder named `advanced_poolcleaner`. Merge your existing settings into the new config instead of replacing your custom settings blindly.
+
+## 2. Start dependencies
+
+Start your selected framework, inventory, phone and target providers before mm_bridge. The manifest dependencies for this release are:
+
 ```cfg
-ensure oxmysql
+ensure mm_bridge
 ensure ox_lib
-ensure qbx_core
+ensure oxmysql
 ensure advanced_poolcleaner
 ```
 
-For whitelist use, set JobMode = whitelist, RequiredJob and optional RequireOnDuty, then merge qbx_job_snippet.lua. Public is default. Inventory.mode none needs no items; ox_inventory/tgiann-inventory modes need matching supplied snippets. Custom mode deliberately fails until server/inventory_bridge.lua is adapted. Grant poolcleaner.admin and create exact task points through /poolcreator. Default locations are examples, not supplied interiors.
+This lists required resources, not all optional integrations. Install OneSync and external gameplay integrations where the product's networked features require them. See [bridge integration](bridge.md).
 
-## Database
+## 3. Prepare data and items
 
-Automatic creation exists. Optional manual schema: `sql/install.sql`.
+- `sql/install.sql`
 
-| Resource-owned table |
-| --- |
-| `advanced_pool_locations` |
-| `advanced_pool_profiles` |
+Use the [SQL/install reference](install-reference.md) for included schemas and item templates. Import initial schema only where needed; preserve existing records. Review ALTER migrations before applying them. Add required item definitions when you enable inventory requirements.
 
-## Staff ACE
+## 4. Configure and verify
 
-```cfg
-add_ace group.admin poolcleaner.admin allow
-```
+Optional item requirements default to Inventory.mode='none'. Select mode='bridge' for generic bridge inventory reads. Required item mutations and payouts must be confirmed; failed payout completes progression but records zero earnings and needs staff reconciliation.
 
-
-Source: manifest/config and loaded server database/bridge code.
+Read [configuration](configuration.md), [bridge integration](bridge.md) and [troubleshooting](troubleshooting.md). Test one complete workflow, a missing-provider case and persistence after reconnect before production. Live provider combinations have not been validated here.

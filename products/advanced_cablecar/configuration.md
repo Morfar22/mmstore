@@ -1,36 +1,38 @@
+---
+description: "Current configuration excerpts for Advanced Cablecar."
+---
+
 # Advanced Cablecar — Configuration
 
-Edit the indicated config file and restart the resource after changes. Values are the exact uploaded defaults, not proposed settings. SQL-backed ownership, tax rates, stock and placement may override or outlive config seed values. Comments below are retained as source context and can include legacy notes; the usage/setup pages explain important current behavior.
+Select common providers in [mm_bridge](../../bridge/configuration.md). These excerpts come from the delivered **1.8.0** configuration. Edit gameplay settings in the resource, not the shared bridge. SQL records may override initial defaults.
 
-All Config assignments in the supplied file are included. Vet pharmacy excerpts omit real-world dose/label fields; use the medicine guide for FiveM effects. Do not apply RP values as real treatment instructions.
+## Config
+
+Source file: `config.lua`.
+
+```lua
+Config = {}
+```
 
 ## Config.Framework
 
-qbox money adapter or standalone without deduction for Cablecar.
-
-Source: `config.lua`, line 3.
+Source file: `config.lua`.
 
 ```lua
-Config.Framework = 'qbox' -- 'qbox' or 'standalone'
+Config.Framework = 'qbox' -- 'qbox' uses mm_bridge; 'standalone' skips payment as before
 ```
-
 
 ## Config.Locale
 
-Selects language where supported; most products supply da/en. Smoking/Pause have no generic locale switch.
-
-Source: `config.lua`, line 4.
+Source file: `config.lua`.
 
 ```lua
 Config.Locale = 'da'      -- 'da' or 'en'
 ```
 
-
 ## Config.Target
 
-Optional target provider; proximity/native alternatives vary by resource.
-
-Source: `config.lua`, line 6.
+Source file: `config.lua`.
 
 ```lua
 Config.Target = {
@@ -40,23 +42,17 @@ Config.Target = {
 }
 ```
 
-
 ## Config.Debug
 
-Diagnostic verbosity; keep disabled outside a reproduction.
-
-Source: `config.lua`, line 12.
+Source file: `config.lua`.
 
 ```lua
 Config.Debug = false
 ```
 
-
 ## Config.ShowStationBlips
 
-Controls show station blips. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 13.
+Source file: `config.lua`.
 
 ```lua
 Config.ShowStationBlips = true
@@ -65,12 +61,9 @@ Config.ShowStationBlips = true
 -- ox_lib is the primary UI layer. Scaleforms are not used by this resource.
 ```
 
-
 ## Config.OxLibUI
 
-Controls ox lib u i. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 17.
+Source file: `config.lua`.
 
 ```lua
 Config.OxLibUI = {
@@ -89,12 +82,9 @@ Config.OxLibUI = {
 -- and restricted to the configured ACE principal (QBox admins use group.admin).
 ```
 
-
 ## Config.Developer
 
-Controls developer. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 31.
+Source file: `config.lua`.
 
 ```lua
 Config.Developer = {
@@ -107,12 +97,9 @@ Config.Developer = {
 }
 ```
 
-
 ## Config.CabinBlips
 
-Controls cabin blips. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 40.
+Source file: `config.lua`.
 
 ```lua
 Config.CabinBlips = {
@@ -128,23 +115,17 @@ Config.CabinBlips = {
 -- away from and into stations, while remaining authoritative for all clients.
 ```
 
-
 ## Config.Speed
 
-Controls speed. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 51.
+Source file: `config.lua`.
 
 ```lua
 Config.Speed = 17.5             -- maximum metres per second along the route
 ```
 
-
 ## Config.Movement
 
-Controls movement. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 52.
+Source file: `config.lua`.
 
 ```lua
 Config.Movement = {
@@ -154,67 +135,49 @@ Config.Movement = {
 }
 ```
 
-
 ## Config.StationWait
 
-Controls station wait. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 57.
+Source file: `config.lua`.
 
 ```lua
 Config.StationWait = 25.0       -- seconds at each end
 ```
 
-
 ## Config.DoorCloseLead
 
-Controls door close lead. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 58.
+Source file: `config.lua`.
 
 ```lua
 Config.DoorCloseLead = 2.5      -- close doors this many seconds before departure
 ```
 
-
 ## Config.SyncInterval
 
-Controls sync interval. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 59.
+Source file: `config.lua`.
 
 ```lua
 Config.SyncInterval = 500       -- server -> clients milliseconds
 ```
 
-
 ## Config.HardSyncThreshold
 
-Controls hard sync threshold. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 60.
+Source file: `config.lua`.
 
 ```lua
 Config.HardSyncThreshold = 0.03 -- snap if progress differs by more than 3%
 ```
 
-
 ## Config.StreamDistance
 
-Controls stream distance. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 61.
+Source file: `config.lua`.
 
 ```lua
 Config.StreamDistance = 2200.0
 ```
 
-
 ## Config.Fare
 
-Ticket price/account/lifetime/consumption and free jobs.
-
-Source: `config.lua`, line 63.
+Source file: `config.lua`.
 
 ```lua
 Config.Fare = {
@@ -230,12 +193,9 @@ Config.Fare = {
 }
 ```
 
-
 ## Config.Models
 
-Controls models. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 75.
+Source file: `config.lua`.
 
 ```lua
 Config.Models = {
@@ -248,12 +208,9 @@ Config.Models = {
 -- prop_ticket_machine_01 is a base-game GTA V prop, so no streamed asset is required.
 ```
 
-
 ## Config.TicketMachine
 
-Controls ticket machine. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 83.
+Source file: `config.lua`.
 
 ```lua
 Config.TicketMachine = {
@@ -273,12 +230,9 @@ Config.TicketMachine = {
 -- p_cablecar_s entity, so they stay aligned with our synchronized tram.
 ```
 
-
 ## Config.Cinematic
 
-Controls cinematic. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 98.
+Source file: `config.lua`.
 
 ```lua
 Config.Cinematic = {
@@ -312,12 +266,9 @@ Config.Cinematic = {
 }
 ```
 
-
 ## Config.Audio
 
-Controls audio. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 128.
+Source file: `config.lua`.
 
 ```lua
 Config.Audio = {
@@ -333,12 +284,9 @@ Config.Audio = {
 }
 ```
 
-
 ## Config.Doors
 
-Controls doors. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 140.
+Source file: `config.lua`.
 
 ```lua
 Config.Doors = {
@@ -351,12 +299,9 @@ Config.Doors = {
 -- These are switched as each cabin reaches the matching cable gradient.
 ```
 
-
 ## Config.GradientAnimations
 
-Controls gradient animations. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 148.
+Source file: `config.lua`.
 
 ```lua
 Config.GradientAnimations = {
@@ -370,12 +315,9 @@ Config.GradientAnimations = {
 -- as the passenger/interior reference point. Keep all rider logic around that origin.
 ```
 
-
 ## Config.Rider
 
-Controls rider. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 157.
+Source file: `config.lua`.
 
 ```lua
 Config.Rider = {
@@ -401,12 +343,9 @@ Config.Rider = {
 }
 ```
 
-
 ## Config.Stations
 
-Controls stations. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 179.
+Source file: `config.lua`.
 
 ```lua
 Config.Stations = {
@@ -427,12 +366,9 @@ Config.Stations = {
 -- Route A runs bottom -> top.
 ```
 
-
 ## Config.Tracks
 
-Controls tracks. The source excerpt below shows the exact supplied value and inline units/comments; verify usage against the product guide before changing it.
-
-Source: `config.lua`, line 195.
+Source file: `config.lua`.
 
 ```lua
 Config.Tracks = {

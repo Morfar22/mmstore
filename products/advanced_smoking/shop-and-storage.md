@@ -7,3 +7,8 @@ Owner manages employees by citizenid, prices and withdrawal to bank. Employees o
 Cases/humidor use unique nrp_smoking_<uid> native stashes with slots/maxWeight and smoking-product whitelist. Humidor is owner-private; placed glass supports use and owner pickup. Container content weight is not automatically added to the carried case item's fixed weight. Loan/return recovery and prop placement use DB journals; SQL and inventory are still separate storage systems.
 
 World props retain coordinates/bucket, max five per owner/150 total, refresh eight seconds by default. Twenty-four nearby smoker visuals maximum, visual distance 45 m; litter lifetime 90 s. Dynamic housing bucket remapping is outside the package.
+
+
+## Bridge storage and settlement
+
+Storage opens only with real native authorization hooks. QB/custom stash integrations require a local adapter. Owner withdrawals marked processing/review are not automatically retried; reconcile actual credit and the reserved shop amount. See [bridge integration](bridge.md) for the full contract.

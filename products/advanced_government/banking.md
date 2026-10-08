@@ -1,9 +1,16 @@
-# Government — NRP banking architecture
+# Government — Society banking
 
-server/nrp_bridge.lua is loaded before server/main.lua and implements the active Gov.transfer transaction. Public recipients map to Config.PublicAccounts; private jobs map through BusinessAccounts to nrp_business_<business>. Business table status/owner is verified.
 
-The SQL transaction updates government_treasury and recipient vi_accounts, settles grant/contract records when applicable, inserts treasury transaction reference, vi_transactions and government_audit. A receipt lookup determines whether the conditional update actually happened. Do not replace just Banking.resource and assume the transaction schema changed.
 
-Required external structures include vi_accounts, vi_transactions, nrp_businesses and the NRP resources/export/audit contracts. They are not defined by this package's 22 government tables. Private boss checks additionally call nrp_businesses.GetBossBankAccount.
+Config.SocietyBridge.mode='nrp_sql' retains the supplied NRP integration. It requires nrp_core_systems plus its vi_accounts/vi_transactions schema. Private concessions additionally use nrp_businesses and its ownership data. NRP was removed as a hard manifest dependency; choosing this adapter still requires those resources/schema. Config.Banking.enabled=false disables society settlement.
 
-For another bank provider, design a complete adapter with equivalent validations/reconciliation and review all direct NRP calls. The old README Renewed-Banking example is historical context. Imported government rows do not install the external account schema. Defaults such as treasury seed/taxes may only initialize missing rows; config edits do not guarantee overwriting persisted rates/balances.
+The NRP SQL path preserves treasury debit, account credit, receipt and grant/contract status updates on a single oxmysql transaction connection. Standalone treasury credits/debits without a society account still use government SQL. Grants/contracts or society payouts are disabled without a supported society adapter. A framework choice does not convert NRP banking itself.
+
+Custom banking is configured through Config.SocietyBridge.custom:
+
+- resolveAccount(job): return an actual mapped account string or nil. Blocked jobs remain blocked.
+- isConcessionBoss(source,job): confirm real private-business control, returning true only when authorized.
+- transfer(amount,direction,reason,metadata,actorId,actorName,account,settlement): return true and optional resulting treasury balance only after confirmed atomic settlement. settlement may contain kind=grant/contract, IDs and review details.
+- credit(account,amount): confirmed standalone society credit used by the existing job-credit export; it is not a substitute for atomic transfer.
+
+The transfer adapter must validate/recheck available treasury funds and settlement eligibility, update the government grant/contract status exactly once, credit the real society account and persist receipt/audit data atomically or provide an equally durable settlement protocol. Calling an external AddMoney export and returning true is not a complete settlement adapter. This package does not guess ESX addonaccount, QB banking or other providers' schema. Configure PublicAccounts/BusinessAccounts to real account mappings.
